@@ -1,0 +1,11 @@
+{
+  "name": "cally",
+  "version": "1.0.0",
+  "description": "Parses natural language to create a calendar appointment",
+  "dependencies":{
+    "buster" : "0.7.18"
+  },
+  "author": {
+    "name": "Ali Rawashdeh"
+  }
+}
