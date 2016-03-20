@@ -154,6 +154,49 @@ buster.testCase("Day of Week Tests", {
     buster.assert(appt.date.getDay() == 0);
     buster.assert(appt.date.getTime() > date.getTime());
     buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
+  },
+
+  "Can ignore day of week embedded in other words": function(){
+    var appt;
+
+    date = new Date();
+    date.setHours(0,0,0,0);
+    appt = new Cally("Meet John to discuss the Sunshine Monster Virtue Wedding Thunder Fritter Saturn Cafe on Saturday");
+
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDay() == 6);
+    buster.assert(appt.date.getTime() > date.getTime());
+    buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
+  },
+
+  "Can find a subject before a day of the week": function(){
+    var appt;
+    appt = new Cally("Meet John Monday");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.date.getDay() == 1);
+    buster.assert(appt.subject == "Meet John");
+  },
+
+  "Can find subject when there is a keyword prior to day of week": function(){
+    var appt;
+    appt = new Cally("Meet John on Monday");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.date.getDay() == 1);
+    buster.assert(appt.subject == "Meet John");
+
+
+    appt = new Cally("Meet John this Tuesday");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.date.getDay() == 2);
+    buster.assert(appt.subject == "Meet John");
+  },
+
+  "Can find a subject before a day of the week with comma": function(){
+    var appt;
+    appt = new Cally("Meet John, Monday");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.date.getDay() == 1);
+    buster.assert(appt.subject == "Meet John");
   }
 
 });
