@@ -41,6 +41,7 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John 12th November"
 * Cater for "Meet John 12th of November"
 * Cater for "Meet John on the 10th of November"
+
 ### Location
 * Cater for "Meet John at Starbucks"
 * Cater for "Meet John in Starbucks"
@@ -49,6 +50,7 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John underneath the Starbucks"
 * Cater for "Meet John inside Starbucks"
 * Cater for "Meet John near Starbucks"
+
 ### Start Time
 * Cater for "Meet John at fourteen hundred"
 * Cater for "Meet John at 1400"
@@ -65,6 +67,7 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John at quarter to 5"
 * Cater for "Meet John at 10 o'clock"
 * Cater for "Meet John starting at 14:00"
+
 ### Finish Time
 * Cater for "Meet John at 10:00 for 1 hour"
 * Cater for "Meet John at 10:00 until 4"
@@ -73,6 +76,7 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John at 10:00 finishing at 4"
 * Cater for "Meet John from Saturday until Sunday"
 * Cater for "Meet John from Saturday until Sunday"
+
 ### General
 * Recurring meetings
 * All day meetings
