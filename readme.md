@@ -20,10 +20,10 @@ $ node_modules/buster/bin/buster-test
 * ~~ Cater for "Meet John on Mon"~~
 * ~~ Cater for "Meet John on Monday"~~
 * ~~ Cater for "Meet John today" ~~
+* ~~ Cater for "Meet John tomorrow" ~~
 * Cater for "Meet John this afternoon"
 * Cater for "Meet John tonight"
 * Cater for "Meet John this evening"
-* Cater for "Meet John tomorrow"
 * Cater for "Meet John in the morning"
 * Cater for "Meet John tomorrow morning"
 * Cater for "Meet John tomorrow night"

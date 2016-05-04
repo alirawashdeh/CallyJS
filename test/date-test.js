@@ -173,6 +173,7 @@ buster.testCase("Date Tests", {
     var appt;
     appt = new Cally("Meet John Monday");
     buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 1);
     buster.assert(appt.subject == "Meet John");
   },
@@ -181,12 +182,14 @@ buster.testCase("Date Tests", {
     var appt;
     appt = new Cally("Meet John on Monday");
     buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 1);
     buster.assert(appt.subject == "Meet John");
 
 
     appt = new Cally("Meet John this Tuesday");
     buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 2);
     buster.assert(appt.subject == "Meet John");
   },
@@ -195,15 +198,28 @@ buster.testCase("Date Tests", {
     var appt;
     appt = new Cally("Meet John, Monday");
     buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 1);
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find today": function(){
+  "Can find keyword today": function(){
     var appt;
     appt = new Cally("Meet John today");
     buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
     var date = new Date();
+    buster.assert(appt.date.getDate() == date.getDate());
+    buster.assert(appt.subject == "Meet John");
+  },
+
+  "Can find keyword tomorrow": function(){
+    var appt;
+    appt = new Cally("Meet John tomorrow");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
+    var date = new Date();
+    date.setDate(date.getDate() + 1);
     buster.assert(appt.date.getDate() == date.getDate());
     buster.assert(appt.subject == "Meet John");
   }

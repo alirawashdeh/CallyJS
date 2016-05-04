@@ -16,6 +16,9 @@ Cally = function(text){
     if(this.textString.length > 0){
       console.log("Parsing text: ", this.textString);
       this.findDayOfWeek();
+      if(!this.datefound){
+        this.findDateKeyword();
+      }
       this.populateSubject();
     }
   };
@@ -90,16 +93,31 @@ Cally = function(text){
       this.date = defaultDate;
       this.datefound = true;
     }
-    else
-    {
-      if(this.textStringLower.search(regexToday) > -1)
-      {
-        this.datefound = true;
-        this.setSubjectEndPos(this.textStringLower.search(regexToday));
-        console.log("Day of week found: Today");
-    }
+
   }
 
+  this.findDateKeyword = function(){
+    var defaultDate = this.date ? this.date : new Date();
+
+    var regexToday = /([^a-z]+|^)(today)([^a-z]+|$)/;
+    var regexTomorrow = /([^a-z]+|^)(tomorrow)([^a-z]+|$)/;
+
+    if(this.textStringLower.search(regexToday) > -1)
+    {
+      // Keep the default date.
+      this.datefound = true;
+      this.setSubjectEndPos(this.textStringLower.search(regexToday));
+      console.log("Day of week found: Today");
+    }
+    else {
+      if(this.textStringLower.search(regexTomorrow) > -1)
+      {
+        this.date.setDate(defaultDate.getDate() + 1);
+        this.datefound = true;
+        this.setSubjectEndPos(this.textStringLower.search(regexTomorrow));
+        console.log("Day of week found: Tomorrow");
+      }
+    }
   }
 
   this.setSubjectEndPos = function(pos){
