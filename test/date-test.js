@@ -1,7 +1,7 @@
 var buster = require("buster");
 var cally = require("../cally.js");
 
-buster.testCase("Day of Week Tests", {
+buster.testCase("Date Tests", {
   "Can not find day of week date": function(){
     var appt;
     appt = new Cally("MOOONNNNNDDDAAAAYYYY");
@@ -197,6 +197,16 @@ buster.testCase("Day of Week Tests", {
     buster.assert(appt.subjectfound);
     buster.assert(appt.date.getDay() == 1);
     buster.assert(appt.subject == "Meet John");
+  },
+
+  "Can find today": function(){
+    var appt;
+    appt = new Cally("Meet John today");
+    buster.assert(appt.subjectfound);
+    var date = new Date();
+    buster.assert(appt.date.getDate() == date.getDate());
+    buster.assert(appt.subject == "Meet John");
   }
+
 
 });
