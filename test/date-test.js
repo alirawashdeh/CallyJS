@@ -222,6 +222,19 @@ buster.testCase("Date Tests", {
     date.setDate(date.getDate() + 1);
     buster.assert(appt.date.getDate() == date.getDate());
     buster.assert(appt.subject == "Meet John");
+  },
+
+  "Can find keyword this afternoon": function(){
+    var appt;
+    appt = new Cally("Meet John this afternoon");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
+    buster.assert(appt.timefound);
+
+    var date = new Date();
+    buster.assert(appt.date.getDate() == date.getDate());
+    buster.assert(appt.date.getHours() == 14);
+    buster.assert(appt.subject == "Meet John");
   }
 
 
