@@ -41,6 +41,7 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John 12th November"
 * Cater for "Meet John 12th of November"
 * Cater for "Meet John on the 10th of November"
+* Cater for "Meet John this afternoon at 3"
 
 ### Location
 * Cater for "Meet John at Starbucks"
