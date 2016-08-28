@@ -248,7 +248,19 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getDate() == date.getDate());
     buster.assert(appt.date.getHours() == 20);
     buster.assert(appt.subject == "Meet John");
-  }
+  },
 
+    "Can find keyword this evening": function(){
+      var appt;
+      appt = new Cally("Meet John this evening");
+      buster.assert(appt.subjectfound);
+      buster.assert(appt.datefound);
+      buster.assert(appt.timefound);
+
+      var date = new Date();
+      buster.assert(appt.date.getDate() == date.getDate());
+      buster.assert(appt.date.getHours() == 20);
+      buster.assert(appt.subject == "Meet John");
+    }
 
 });

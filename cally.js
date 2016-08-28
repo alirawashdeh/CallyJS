@@ -107,7 +107,7 @@ Cally = function(text){
     var regexToday = /([^a-z]+|^)(today)([^a-z]+|$)/;
     var regexTomorrow = /([^a-z]+|^)(tomorrow)([^a-z]+|$)/;
     var regexThisAfternoon = /([^a-z]+|^)(this afternoon)([^a-z]+|$)/;
-    var regexTonight = /([^a-z]+|^)(tonight)([^a-z]+|$)/;
+    var regexTonight = /([^a-z]+|^)(tonight)|(this evening)([^a-z]+|$)/;
 
     if(this.textStringLower.search(regexToday) > -1)
     {
