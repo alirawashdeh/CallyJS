@@ -1,6 +1,9 @@
 var buster = require("buster");
 var cally = require("../cally.js");
 
+var eveningTime = 20;
+var morningTime = 10;
+
 buster.testCase("Date Tests", {
   "Can not find day of week date": function(){
     var appt;
@@ -246,7 +249,7 @@ buster.testCase("Date Tests", {
 
     var date = new Date();
     buster.assert(appt.date.getDate() == date.getDate());
-    buster.assert(appt.date.getHours() == 20);
+    buster.assert(appt.date.getHours() == eveningTime);
     buster.assert(appt.subject == "Meet John");
   },
 
@@ -259,8 +262,22 @@ buster.testCase("Date Tests", {
 
       var date = new Date();
       buster.assert(appt.date.getDate() == date.getDate());
-      buster.assert(appt.date.getHours() == 20);
+      buster.assert(appt.date.getHours() == eveningTime);
       buster.assert(appt.subject == "Meet John");
-    }
+    },
+
+      "Can find keyword in the morning": function(){
+        var appt;
+        appt = new Cally("Meet John in the morning");
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.timefound);
+
+        var date = new Date();
+        buster.assert(appt.date.getDate() == date.getDate()+1);
+        buster.assert(appt.date.getHours() == morningTime);
+        buster.assert(appt.subject == "Meet John");
+      }
+
 
 });
