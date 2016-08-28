@@ -168,7 +168,7 @@ Cally = function(text){
   this.findTimeKeyword = function(){
     var regexMorning = /([^a-z]+|^)(morning)([^a-z]+|$)/;
     var regexAfternoon = /([^a-z]+|^)(afternoon)([^a-z]+|$)/;
-    var regexNight = /([^a-z]+|^)(night)([^a-z]+|$)/;
+    var regexNight = /([^a-z]+|^)(night)|(evening)([^a-z]+|$)/;
 
     if(this.textStringLower.search(regexMorning) > -1)
     {
@@ -191,7 +191,7 @@ Cally = function(text){
           this.timefound = true;
           this.date.setHours(EVENING_TIME);
           this.setSubjectEndPos(this.textStringLower.search(regexNight));
-          console.log("Day of week found: Night");
+          console.log("Day of week found: Night / Evening");
         }
       }
     }
