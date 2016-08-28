@@ -253,31 +253,31 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-    "Can find keyword this evening": function(){
-      var appt;
-      appt = new Cally("Meet John this evening");
-      buster.assert(appt.subjectfound);
-      buster.assert(appt.datefound);
-      buster.assert(appt.timefound);
+  "Can find keyword this evening": function(){
+    var appt;
+    appt = new Cally("Meet John this evening");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
+    buster.assert(appt.timefound);
 
-      var date = new Date();
-      buster.assert(appt.date.getDate() == date.getDate());
-      buster.assert(appt.date.getHours() == eveningTime);
-      buster.assert(appt.subject == "Meet John");
-    },
+    var date = new Date();
+    buster.assert(appt.date.getDate() == date.getDate());
+    buster.assert(appt.date.getHours() == eveningTime);
+    buster.assert(appt.subject == "Meet John");
+  },
 
-      "Can find keyword in the morning": function(){
-        var appt;
-        appt = new Cally("Meet John in the morning");
-        buster.assert(appt.subjectfound);
-        buster.assert(appt.datefound);
-        buster.assert(appt.timefound);
+  "Can find keyword in the morning": function(){
+    var appt;
+    appt = new Cally("Meet John in the morning");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
+    buster.assert(appt.timefound);
 
-        var date = new Date();
-        buster.assert(appt.date.getDate() == date.getDate()+1);
-        buster.assert(appt.date.getHours() == morningTime);
-        buster.assert(appt.subject == "Meet John");
-      }
+    var date = new Date();
+    buster.assert(appt.date.getDate() == date.getDate()+1);
+    buster.assert(appt.date.getHours() == morningTime);
+    buster.assert(appt.subject == "Meet John");
+  }
 
-
+  
 });
