@@ -1,8 +1,11 @@
 # Cally
 
 Natural language processing for the creation of calendar appointments.
+Drop cally.js into your web application to use it.
 
-## Installation
+Node.js is only required if you wish to run the unit tests.
+
+## Installation for Testing
 
 ```
 $ npm install
@@ -27,6 +30,7 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John in the morning"
 * Cater for "Meet John tomorrow morning"
 * Cater for "Meet John tomorrow night"
+* Cater for "Meet John tomorrow evening"
 * Cater for "Meet John next Monday"
 * Cater for "Meet John next week"
 * Cater for "Meet John next month"
