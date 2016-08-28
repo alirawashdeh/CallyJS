@@ -330,7 +330,20 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getDate() == date.getDate()+1);
     buster.assert(appt.date.getHours() == eveningTime);
     buster.assert(appt.subject == "Meet John");
+  },
+
+  "Can find time keyword combined with day - Tuesday evening": function(){
+    var appt;
+    appt = new Cally("Meet John Tuesday evening");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
+    buster.assert(appt.timefound);
+
+    buster.assert(appt.date.getDay() == 2);
+    buster.assert(appt.date.getHours() == eveningTime);
+    buster.assert(appt.subject == "Meet John");
   }
+
 
 
 });
