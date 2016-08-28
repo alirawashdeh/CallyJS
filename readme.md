@@ -29,7 +29,7 @@ $ node_modules/buster/bin/buster-test
 * ~~Cater for "Meet John this evening"~~
 * ~~Cater for "Meet John in the morning"~~
 * ~~Cater for "Meet John tomorrow morning"~~
-* Cater for "Meet John tomorrow night"
+* ~~Cater for "Meet John tomorrow night"~~
 * ~~Cater for "Meet John tomorrow afternoon"~~
 * Cater for "Meet John tomorrow evening"
 * Cater for "Meet John Tuesday evening"

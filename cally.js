@@ -1,5 +1,5 @@
 const AFTERNOON_TIME = 14;
-const TONIGHT_TIME = 20;
+const EVENING_TIME = 20;
 const MORNING_TIME = 10;
 
 Cally = function(text){
@@ -143,7 +143,7 @@ Cally = function(text){
             // Keep the default date
             this.datefound = true;
             this.timefound = true;
-            this.date.setHours(TONIGHT_TIME);
+            this.date.setHours(EVENING_TIME);
             this.setSubjectEndPos(this.textStringLower.search(regexTonight));
             console.log("Day of week found: Tonight / This Evening");
           }
@@ -168,6 +168,7 @@ Cally = function(text){
   this.findTimeKeyword = function(){
     var regexMorning = /([^a-z]+|^)(morning)([^a-z]+|$)/;
     var regexAfternoon = /([^a-z]+|^)(afternoon)([^a-z]+|$)/;
+    var regexNight = /([^a-z]+|^)(night)([^a-z]+|$)/;
 
     if(this.textStringLower.search(regexMorning) > -1)
     {
@@ -183,6 +184,15 @@ Cally = function(text){
         this.date.setHours(AFTERNOON_TIME);
         this.setSubjectEndPos(this.textStringLower.search(regexAfternoon));
         console.log("Day of week found: Afternoon");
+      }
+      else {
+        if(this.textStringLower.search(regexNight) > -1)
+        {
+          this.timefound = true;
+          this.date.setHours(EVENING_TIME);
+          this.setSubjectEndPos(this.textStringLower.search(regexNight));
+          console.log("Day of week found: Night");
+        }
       }
     }
 

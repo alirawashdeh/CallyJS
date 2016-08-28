@@ -304,6 +304,19 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getDate() == date.getDate()+1);
     buster.assert(appt.date.getHours() == afternoonTime);
     buster.assert(appt.subject == "Meet John");
+  },
+
+  "Can find time keywords - night": function(){
+    var appt;
+    appt = new Cally("Meet John tomorrow night");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
+    buster.assert(appt.timefound);
+
+    var date = new Date();
+    buster.assert(appt.date.getDate() == date.getDate()+1);
+    buster.assert(appt.date.getHours() == eveningTime);
+    buster.assert(appt.subject == "Meet John");
   }
 
 
