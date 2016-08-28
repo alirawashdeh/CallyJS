@@ -167,6 +167,7 @@ Cally = function(text){
 
   this.findTimeKeyword = function(){
     var regexMorning = /([^a-z]+|^)(morning)([^a-z]+|$)/;
+    var regexAfternoon = /([^a-z]+|^)(afternoon)([^a-z]+|$)/;
 
     if(this.textStringLower.search(regexMorning) > -1)
     {
@@ -174,6 +175,15 @@ Cally = function(text){
       this.date.setHours(MORNING_TIME);
       this.setSubjectEndPos(this.textStringLower.search(regexMorning));
       console.log("Day of week found: Morning");
+    }
+    else {
+      if(this.textStringLower.search(regexAfternoon) > -1)
+      {
+        this.timefound = true;
+        this.date.setHours(AFTERNOON_TIME);
+        this.setSubjectEndPos(this.textStringLower.search(regexAfternoon));
+        console.log("Day of week found: Afternoon");
+      }
     }
 
   }
