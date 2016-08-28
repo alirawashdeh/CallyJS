@@ -21,10 +21,11 @@ Cally = function(text){
   this.parse = function(){
     if(this.textString.length > 0){
       console.log("Parsing text: ", this.textString);
-      this.findDayOfWeek();
+      this.findDayOfWeek(); //e.g. Monday Tuesday
       if(!this.datefound){
-        this.findDateKeyword();
+        this.findDateKeyword(); //e.g. Tonight, Tomorrow
       }
+      this.findTimeKeyword();
       this.populateSubject();
     }
   };
@@ -131,8 +132,8 @@ Cally = function(text){
         {
           // Keep the default date
           this.datefound = true;
-          this.date.setHours(AFTERNOON_TIME);
           this.timefound = true;
+          this.date.setHours(AFTERNOON_TIME);
           this.setSubjectEndPos(this.textStringLower.search(regexThisAfternoon));
           console.log("Day of week found: This Afternoon");
         }
@@ -141,8 +142,8 @@ Cally = function(text){
           {
             // Keep the default date
             this.datefound = true;
-            this.date.setHours(TONIGHT_TIME);
             this.timefound = true;
+            this.date.setHours(TONIGHT_TIME);
             this.setSubjectEndPos(this.textStringLower.search(regexTonight));
             console.log("Day of week found: Tonight / This Evening");
           }
@@ -163,6 +164,20 @@ Cally = function(text){
       }
     }
   }
+
+  this.findTimeKeyword = function(){
+    var regexMorning = /([^a-z]+|^)(morning)([^a-z]+|$)/;
+
+    if(this.textStringLower.search(regexMorning) > -1)
+    {
+      this.timefound = true;
+      this.date.setHours(MORNING_TIME);
+      this.setSubjectEndPos(this.textStringLower.search(regexMorning));
+      console.log("Day of week found: Morning");
+    }
+
+  }
+
 
   this.setSubjectEndPos = function(pos){
     if(pos < subjectend)

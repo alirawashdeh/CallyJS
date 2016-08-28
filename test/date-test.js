@@ -277,7 +277,20 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getDate() == date.getDate()+1);
     buster.assert(appt.date.getHours() == morningTime);
     buster.assert(appt.subject == "Meet John");
+  },
+
+  "Can find time keywords - morning": function(){
+    var appt;
+    appt = new Cally("Meet John tomorrow morning");
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
+    buster.assert(appt.timefound);
+
+    var date = new Date();
+    buster.assert(appt.date.getDate() == date.getDate()+1);
+    buster.assert(appt.date.getHours() == morningTime);
+    buster.assert(appt.subject == "Meet John");
   }
 
-  
+
 });
