@@ -22,7 +22,7 @@ $ node_modules/buster/bin/buster-test
 * ~~Cater for "Meet John today"~~
 * ~~Cater for "Meet John tomorrow"~~
 * ~~Cater for "Meet John this afternoon"~~
-* Cater for "Meet John tonight"
+* ~~Cater for "Meet John tonight"~~
 * Cater for "Meet John this evening"
 * Cater for "Meet John in the morning"
 * Cater for "Meet John tomorrow morning"
@@ -42,6 +42,7 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John 12th of November"
 * Cater for "Meet John on the 10th of November"
 * Cater for "Meet John this afternoon at 3"
+* Cater for "Meet John this tonight at 9"
 
 ### Location
 * Cater for "Meet John at Starbucks"
