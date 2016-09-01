@@ -160,6 +160,158 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
   },
 
+  "Can find next mon,tues,wed,thurs,fri,sat,sun": function(){
+    var appt;
+
+    //Monday
+    date = new Date("August 01, 2016 00:00:00");
+    appt = new Cally("Meet John next mon", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 8);
+
+    date = new Date("August 01, 2016 00:00:00");
+    appt = new Cally("Meet John next tues", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 9);
+
+    date = new Date("August 01, 2016 00:00:00");
+    appt = new Cally("Meet John next wed", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 10);
+
+    date = new Date("August 01, 2016 00:00:00");
+    appt = new Cally("Meet John next thurs", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 11);
+
+    date = new Date("August 01, 2016 00:00:00");
+    appt = new Cally("Meet John next fri", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 12);
+
+    date = new Date("August 01, 2016 00:00:00");
+    appt = new Cally("Meet John next sat", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 13);
+
+    date = new Date("August 01, 2016 00:00:00");
+    appt = new Cally("Meet John next sun", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 14);
+
+    // Friday
+    date = new Date("August 05, 2016 00:00:00");
+    appt = new Cally("Meet John next mon", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 8);
+
+    date = new Date("August 05, 2016 00:00:00");
+    appt = new Cally("Meet John next tues", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 9);
+
+    date = new Date("August 05, 2016 00:00:00");
+    appt = new Cally("Meet John next wed", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 10);
+
+    date = new Date("August 05, 2016 00:00:00");
+    appt = new Cally("Meet John next thurs", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 11);
+
+    date = new Date("August 05, 2016 00:00:00");
+    appt = new Cally("Meet John next fri", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 12);
+
+    date = new Date("August 05, 2016 00:00:00");
+    appt = new Cally("Meet John next sat", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 13);
+
+    date = new Date("August 05, 2016 00:00:00");
+    appt = new Cally("Meet John next sun", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 14);
+
+
+    // Saturday
+    date = new Date("August 06, 2016 00:00:00");
+    appt = new Cally("Meet John next mon", date);
+    buster.assert(appt.datefound);
+    console.log("********" + appt.date.getDate());
+    buster.assert(appt.date.getDate() == 15);
+
+    date = new Date("August 06, 2016 00:00:00");
+    appt = new Cally("Meet John next tues", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 16);
+
+    date = new Date("August 06, 2016 00:00:00");
+    appt = new Cally("Meet John next wed", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 17);
+
+    date = new Date("August 06, 2016 00:00:00");
+    appt = new Cally("Meet John next thurs", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 18);
+
+    date = new Date("August 06, 2016 00:00:00");
+    appt = new Cally("Meet John next fri", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 19);
+
+    date = new Date("August 06, 2016 00:00:00");
+    appt = new Cally("Meet John next sat", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 13);
+
+    date = new Date("August 06, 2016 00:00:00");
+    appt = new Cally("Meet John next sun", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 14);
+
+
+
+    // Sunday
+    date = new Date("August 07, 2016 00:00:00");
+    appt = new Cally("Meet John next mon", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 15);
+
+    date = new Date("August 07, 2016 00:00:00");
+    appt = new Cally("Meet John next tues", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 16);
+
+    date = new Date("August 07, 2016 00:00:00");
+    appt = new Cally("Meet John next wed", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 17);
+
+    date = new Date("August 07, 2016 00:00:00");
+    appt = new Cally("Meet John next thurs", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 18);
+
+    date = new Date("August 07, 2016 00:00:00");
+    appt = new Cally("Meet John next fri", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 19);
+
+    date = new Date("August 07, 2016 00:00:00");
+    appt = new Cally("Meet John next sat", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 13);
+
+    date = new Date("August 07, 2016 00:00:00");
+    appt = new Cally("Meet John next sun", date);
+    buster.assert(appt.datefound);
+    buster.assert(appt.date.getDate() == 14);
+  },
+
   "Can ignore day of week embedded in other words": function(){
     var appt;
 

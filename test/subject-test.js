@@ -4,7 +4,8 @@ var cally = require("../cally.js");
 buster.testCase("Subject Tests", {
   "Can find a simple subject": function(){
     var appt;
-    appt = new Cally("Meet John");
+      date = new Date();
+    appt = new Cally("Meet John", date);
     buster.assert(appt.subjectfound);
     buster.assert.match(appt.subject,"Meet John");
   }

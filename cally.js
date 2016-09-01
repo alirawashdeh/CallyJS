@@ -2,9 +2,9 @@ const AFTERNOON_TIME = 14;
 const EVENING_TIME = 20;
 const MORNING_TIME = 10;
 
-Cally = function(text){
+Cally = function(text, currentdate){
 
-  this.date = new Date()
+  this.date = currentdate;
   this.date.setHours(0,0,0,0);
   this.datefound = false;
   this.timefound = false;
@@ -44,46 +44,70 @@ Cally = function(text){
     var regexSaturday = /([^a-z]+|^)(on |this )*(saturday|sat)([^a-z]+|$)/;
     var regexToday = /([^a-z]+|^)(today)([^a-z]+|$)/;
 
-    // var regexNext = /(next )$/;
-    // var nextFound = false;
+    var regexNext = /(next )$/;
+    var nextFound = false;
 
     if(this.textStringLower.search(regexSunday) > -1){
-      // if(this.textStringLower.substring(
-      //   0,this.textStringLower.search(regexSunday)).search(regexNext) > -1){
-      //     nextFound = true;
-      //   }
       foundDay = 0;
       this.setSubjectEndPos(this.textStringLower.search(regexSunday));
+      if(this.textStringLower.substring(0,this.textStringLower.search(regexSunday)+1).search(regexNext) > -1)
+      {
+        nextFound = true;
+      }
       console.log("Day of week found: Sunday");
     } else {
       if(this.textStringLower.search(regexMonday) > -1){
         foundDay = 1;
         this.setSubjectEndPos(this.textStringLower.search(regexMonday));
+        if(this.textStringLower.substring(0,this.textStringLower.search(regexMonday)+1).search(regexNext) > -1)
+        {
+          nextFound = true;
+        }
         console.log("Day of week found: Monday");
       } else {
         if(this.textStringLower.search(regexTuesday) > -1){
           foundDay = 2;
           this.setSubjectEndPos(this.textStringLower.search(regexTuesday));
+          if(this.textStringLower.substring(0,this.textStringLower.search(regexTuesday)+1).search(regexNext) > -1)
+          {
+            nextFound = true;
+          }
           console.log("Day of week found: Tuesday");
         } else {
           if(this.textStringLower.search(regexWednesday) > -1){
             foundDay = 3;
             this.setSubjectEndPos(this.textStringLower.search(regexWednesday));
+            if(this.textStringLower.substring(0,this.textStringLower.search(regexWednesday)+1).search(regexNext) > -1)
+            {
+              nextFound = true;
+            }
             console.log("Day of week found: Wednesday");
           } else {
             if(this.textStringLower.search(regexThursday) > -1){
               foundDay = 4;
               this.setSubjectEndPos(this.textStringLower.search(regexThursday));
+              if(this.textStringLower.substring(0,this.textStringLower.search(regexThursday)+1).search(regexNext) > -1)
+              {
+                nextFound = true;
+              }
               console.log("Day of week found: Thursday");
             } else {
               if(this.textStringLower.search(regexFriday) > -1){
                 foundDay = 5;
                 this.setSubjectEndPos(this.textStringLower.search(regexFriday));
+                if(this.textStringLower.substring(0,this.textStringLower.search(regexFriday)+1).search(regexNext) > -1)
+                {
+                  nextFound = true;
+                }
                 console.log("Day of week found: Friday");
               } else {
                 if(this.textStringLower.search(regexSaturday) > -1){
                   foundDay = 6;
                   this.setSubjectEndPos(this.textStringLower.search(regexSaturday));
+                  if(this.textStringLower.substring(0,this.textStringLower.search(regexSaturday)+1).search(regexNext) > -1)
+                  {
+                    nextFound = true;
+                  }
                   console.log("Day of week found: Saturday");
                 }
               }
@@ -103,6 +127,36 @@ Cally = function(text){
       {
         diff = foundDay - currentDay;
       }
+
+      if(nextFound)
+      {
+        // if it's a Saturday, all but "next sat" should be >7 days away
+        if((currentDay == 6))
+        {
+          if(diff < 7){
+            diff = diff + 7;
+          }
+        }
+        else {
+
+          // if it's a sunday, all but "next sat" / "next sun" is >7 days away
+          if((currentDay == 0) )
+          {
+            if(diff < 6){
+              diff = diff + 7;
+            }
+          }
+          else {
+            // if found day is past Saturday, add 7 days
+            if(diff < (8-currentDay))
+            {
+              diff = diff + 7;
+            }
+          }
+        }
+
+      }
+
       defaultDate.setDate(defaultDate.getDate() + diff);
       this.date = defaultDate;
       this.datefound = true;
