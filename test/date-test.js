@@ -8,7 +8,7 @@ var afternoonTime = 14;
 buster.testCase("Date Tests", {
   "Can not find day of week date": function(){
     var appt;
-    appt = new Cally("MOOONNNNNDDDAAAAYYYY");
+    appt = new Cally("MOOONNNNNDDDAAAAYYYY", new Date());
     buster.assert(!appt.datefound);
   },
 
@@ -17,61 +17,61 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John monday");
+    appt = new Cally("Meet John monday", new Date());
 
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 1);
     buster.assert(appt.date.getTime() > date.getTime());
-    buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
+    buster.assert(appt.date.getDate() <= date.setDate(date.getDate() + 7));
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John tuesday");
+    appt = new Cally("Meet John tuesday", new Date());
 
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 2);
     buster.assert(appt.date.getTime() > date.getTime());
-    buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
+    buster.assert(appt.date.getDate() <= date.setDate(date.getDate() + 7));
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John wednesday");
+    appt = new Cally("Meet John wednesday", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 3);
     buster.assert(appt.date.getTime() > date.getTime());
-    buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
+    buster.assert(appt.date.getDate() <= date.setDate(date.getDate() + 7));
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John thursday");
+    appt = new Cally("Meet John thursday", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 4);
     buster.assert(appt.date.getTime() > date.getTime());
-    buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
+    buster.assert(appt.date.getDate() <= date.setDate(date.getDate() + 7));
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John friday");
+    appt = new Cally("Meet John friday", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 5);
     buster.assert(appt.date.getTime() > date.getTime());
-    buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
+    buster.assert(appt.date.getDate() <= date.setDate(date.getDate() + 7));
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John saturday");
+    appt = new Cally("Meet John saturday", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 6);
     buster.assert(appt.date.getTime() > date.getTime());
-    buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
+    buster.assert(appt.date.getDate() <= date.setDate(date.getDate() + 7));
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John sunday");
+    appt = new Cally("Meet John sunday", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 0);
     buster.assert(appt.date.getTime() > date.getTime());
-    buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
+    buster.assert(appt.date.getDate() <= date.setDate(date.getDate() + 7));
   },
 
   "Can find mon,tues,wed,thurs,fri,sat,sun": function(){
@@ -79,7 +79,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John mon");
+    appt = new Cally("Meet John mon", new Date());
 
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 1);
@@ -88,7 +88,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John tues");
+    appt = new Cally("Meet John tues", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 2);
     buster.assert(appt.date.getTime() > date.getTime());
@@ -96,7 +96,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John tue");
+    appt = new Cally("Meet John tue", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 2);
     buster.assert(appt.date.getTime() > date.getTime());
@@ -104,7 +104,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John wed");
+    appt = new Cally("Meet John wed", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 3);
     buster.assert(appt.date.getTime() > date.getTime());
@@ -112,7 +112,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John thurs");
+    appt = new Cally("Meet John thurs", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 4);
     buster.assert(appt.date.getTime() > date.getTime());
@@ -120,7 +120,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John thur");
+    appt = new Cally("Meet John thur", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 4);
     buster.assert(appt.date.getTime() > date.getTime());
@@ -129,7 +129,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John thu");
+    appt = new Cally("Meet John thu", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 4);
     buster.assert(appt.date.getTime() > date.getTime());
@@ -137,7 +137,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John fri");
+    appt = new Cally("Meet John fri", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 5);
     buster.assert(appt.date.getTime() > date.getTime());
@@ -145,7 +145,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John sat");
+    appt = new Cally("Meet John sat", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 6);
     buster.assert(appt.date.getTime() > date.getTime());
@@ -153,7 +153,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John sun");
+    appt = new Cally("Meet John sun", new Date());
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 0);
     buster.assert(appt.date.getTime() > date.getTime());
@@ -165,7 +165,7 @@ buster.testCase("Date Tests", {
 
     date = new Date();
     date.setHours(0,0,0,0);
-    appt = new Cally("Meet John to discuss the Sunshine Monster Virtue Wedding Thunder Fritter Saturn Cafe on Saturday");
+    appt = new Cally("Meet John to discuss the Sunshine Monster Virtue Wedding Thunder Fritter Saturn Cafe on Saturday", new Date());
 
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 6);
@@ -175,7 +175,7 @@ buster.testCase("Date Tests", {
 
   "Can find a subject before a day of the week": function(){
     var appt;
-    appt = new Cally("Meet John Monday");
+    appt = new Cally("Meet John Monday", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 1);
@@ -184,14 +184,14 @@ buster.testCase("Date Tests", {
 
   "Can find subject when there is a keyword prior to day of week": function(){
     var appt;
-    appt = new Cally("Meet John on Monday");
+    appt = new Cally("Meet John on Monday", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 1);
     buster.assert(appt.subject == "Meet John");
 
 
-    appt = new Cally("Meet John this Tuesday");
+    appt = new Cally("Meet John this Tuesday", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 2);
@@ -200,7 +200,7 @@ buster.testCase("Date Tests", {
 
   "Can find a subject before a day of the week with comma": function(){
     var appt;
-    appt = new Cally("Meet John, Monday");
+    appt = new Cally("Meet John, Monday", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.date.getDay() == 1);
@@ -209,7 +209,7 @@ buster.testCase("Date Tests", {
 
   "Can find keyword today": function(){
     var appt;
-    appt = new Cally("Meet John today");
+    appt = new Cally("Meet John today", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     var date = new Date();
@@ -219,7 +219,7 @@ buster.testCase("Date Tests", {
 
   "Can find keyword tomorrow": function(){
     var appt;
-    appt = new Cally("Meet John tomorrow");
+    appt = new Cally("Meet John tomorrow", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     var date = new Date();
@@ -230,7 +230,7 @@ buster.testCase("Date Tests", {
 
   "Can find keyword this afternoon": function(){
     var appt;
-    appt = new Cally("Meet John this afternoon");
+    appt = new Cally("Meet John this afternoon", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.timefound);
@@ -243,7 +243,7 @@ buster.testCase("Date Tests", {
 
   "Can find keyword tonight": function(){
     var appt;
-    appt = new Cally("Meet John tonight");
+    appt = new Cally("Meet John tonight", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.timefound);
@@ -256,7 +256,7 @@ buster.testCase("Date Tests", {
 
   "Can find keyword this evening": function(){
     var appt;
-    appt = new Cally("Meet John this evening");
+    appt = new Cally("Meet John this evening", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.timefound);
@@ -269,7 +269,7 @@ buster.testCase("Date Tests", {
 
   "Can find keyword in the morning": function(){
     var appt;
-    appt = new Cally("Meet John in the morning");
+    appt = new Cally("Meet John in the morning", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.timefound);
@@ -282,7 +282,7 @@ buster.testCase("Date Tests", {
 
   "Can find time keywords - morning": function(){
     var appt;
-    appt = new Cally("Meet John tomorrow morning");
+    appt = new Cally("Meet John tomorrow morning", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.timefound);
@@ -295,7 +295,7 @@ buster.testCase("Date Tests", {
 
   "Can find time keywords - afternoon": function(){
     var appt;
-    appt = new Cally("Meet John tomorrow afternoon");
+    appt = new Cally("Meet John tomorrow afternoon", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.timefound);
@@ -308,7 +308,7 @@ buster.testCase("Date Tests", {
 
   "Can find time keywords - night": function(){
     var appt;
-    appt = new Cally("Meet John tomorrow night");
+    appt = new Cally("Meet John tomorrow night", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.timefound);
@@ -321,7 +321,7 @@ buster.testCase("Date Tests", {
 
   "Can find time keywords - evening": function(){
     var appt;
-    appt = new Cally("Meet John tomorrow evening");
+    appt = new Cally("Meet John tomorrow evening", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.timefound);
@@ -334,7 +334,7 @@ buster.testCase("Date Tests", {
 
   "Can find time keyword combined with day - Tuesday evening": function(){
     var appt;
-    appt = new Cally("Meet John Tuesday evening");
+    appt = new Cally("Meet John Tuesday evening", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.datefound);
     buster.assert(appt.timefound);

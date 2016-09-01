@@ -25,8 +25,8 @@ Cally = function(text){
       if(!this.datefound){
         this.findDateKeyword(); //e.g. Tonight, Tomorrow
       }
-      this.findTimeKeyword();
-      this.populateSubject();
+      this.findTimeKeyword(); // e.g. evening, morning
+      this.populateSubject(); // e.g. 'Meet John'
     }
   };
 
@@ -44,7 +44,14 @@ Cally = function(text){
     var regexSaturday = /([^a-z]+|^)(on |this )*(saturday|sat)([^a-z]+|$)/;
     var regexToday = /([^a-z]+|^)(today)([^a-z]+|$)/;
 
+    // var regexNext = /(next )$/;
+    // var nextFound = false;
+
     if(this.textStringLower.search(regexSunday) > -1){
+      // if(this.textStringLower.substring(
+      //   0,this.textStringLower.search(regexSunday)).search(regexNext) > -1){
+      //     nextFound = true;
+      //   }
       foundDay = 0;
       this.setSubjectEndPos(this.textStringLower.search(regexSunday));
       console.log("Day of week found: Sunday");
