@@ -406,7 +406,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find keyword this evening": function(){
+  "Can find keyword - this evening": function(){
     var appt;
     appt = new Cally("Meet John this evening", new Date());
     buster.assert(appt.subjectfound);
@@ -419,7 +419,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find keyword in the morning": function(){
+  "Can find keyword - in the morning": function(){
     var appt;
     appt = new Cally("Meet John in the morning", new Date());
     buster.assert(appt.subjectfound);
@@ -429,6 +429,17 @@ buster.testCase("Date Tests", {
     var date = new Date();
     buster.assert(appt.date.getDate() == date.getDate()+1);
     buster.assert(appt.date.getHours() == morningTime);
+    buster.assert(appt.subject == "Meet John");
+  },
+
+  "Can find keyword - next week": function(){
+    var appt;
+    appt = new Cally("Meet John next week", new Date());
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
+
+    var date = new Date();
+    buster.assert(appt.date.getDate() == date.getDate()+7);
     buster.assert(appt.subject == "Meet John");
   },
 
