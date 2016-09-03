@@ -256,11 +256,16 @@ Cally = function(text, currentdate) {
 
     var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9]pm([^a-z]+|$)/);
     var regexAtNumberPMMatch = /([0-1]*[0-9])pm/;
+    var time = 0;
 
     if (regexAtNumberPMPos > -1) {
       this.timefound = true;
       var matches = this.textStringLower.match(regexAtNumberPMMatch);
-      this.date.setHours(Number(matches[1]) + 12);
+      time = Number(matches[1]) + 12;
+      if(time == 24){
+        time = 12;
+      }
+      this.date.setHours(time);
       this.setSubjectEndPos(regexAtNumberPMPos);
       console.log("Time found: XPM");
     }
