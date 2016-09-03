@@ -166,57 +166,57 @@ Cally = function(text, currentdate){
   this.findDateKeyword = function(){
     var defaultDate = this.date ? this.date : new Date();
 
-    var regexToday = /([^a-z]+|^)(today)([^a-z]+|$)/;
-    var regexTomorrow = /([^a-z]+|^)(tomorrow)([^a-z]+|$)/;
-    var regexThisAfternoon = /([^a-z]+|^)(this afternoon)([^a-z]+|$)/;
-    var regexTonight = /([^a-z]+|^)(tonight)|(this evening)([^a-z]+|$)/;
-    var regexInTheMorning = /([^a-z]+|^)(in the morning)([^a-z]+|$)/;
+    var regexTodayPos = this.textStringLower.search(/([^a-z]+|^)(today)([^a-z]+|$)/);
+    var regexTomorrowPos = this.textStringLower.search(/([^a-z]+|^)(tomorrow)([^a-z]+|$)/);
+    var regexThisAfternoonPos = this.textStringLower.search(/([^a-z]+|^)(this afternoon)([^a-z]+|$)/);
+    var regexTonightPos = this.textStringLower.search(/([^a-z]+|^)(tonight)|(this evening)([^a-z]+|$)/);
+    var regexInTheMorningPos = this.textStringLower.search(/([^a-z]+|^)(in the morning)([^a-z]+|$)/);
 
-    if(this.textStringLower.search(regexToday) > -1)
+    if(regexTodayPos > -1)
     {
       // Keep the default date.
       this.datefound = true;
-      this.setSubjectEndPos(this.textStringLower.search(regexToday));
+      this.setSubjectEndPos(regexTodayPos);
       console.log("Day of week found: Today");
     }
     else {
-      if(this.textStringLower.search(regexTomorrow) > -1)
+      if(regexTomorrowPos > -1)
       {
         this.date.setDate(defaultDate.getDate() + 1);
         this.datefound = true;
-        this.setSubjectEndPos(this.textStringLower.search(regexTomorrow));
+        this.setSubjectEndPos(regexTomorrowPos);
         console.log("Day of week found: Tomorrow");
       }
       else {
-        if(this.textStringLower.search(regexThisAfternoon) > -1)
+        if(regexThisAfternoonPos > -1)
         {
           // Keep the default date
           this.datefound = true;
           this.timefound = true;
           this.date.setHours(AFTERNOON_TIME);
-          this.setSubjectEndPos(this.textStringLower.search(regexThisAfternoon));
+          this.setSubjectEndPos(regexThisAfternoonPos);
           console.log("Day of week found: This Afternoon");
         }
         else {
-          if(this.textStringLower.search(regexTonight) > -1)
+          if(regexTonightPos > -1)
           {
             // Keep the default date
             this.datefound = true;
             this.timefound = true;
             this.date.setHours(EVENING_TIME);
-            this.setSubjectEndPos(this.textStringLower.search(regexTonight));
+            this.setSubjectEndPos(regexTonightPos);
             console.log("Day of week found: Tonight / This Evening");
           }
           else
           {
-            if(this.textStringLower.search(regexInTheMorning) > -1)
+            if(regexInTheMorningPos > -1)
             {
               // Keep the default date
               this.datefound = true;
               this.timefound = true;
               this.date.setDate(defaultDate.getDate() + 1);
               this.date.setHours(MORNING_TIME);
-              this.setSubjectEndPos(this.textStringLower.search(regexInTheMorning));
+              this.setSubjectEndPos(regexInTheMorningPos);
               console.log("Day of week found: In the Morning");
             }
           }
