@@ -31,9 +31,7 @@ Cally = function(text, currentdate){
   };
 
   this.findDayOfWeek = function(){
-    var defaultDate = this.date ? this.date : new Date();
-    var currentDay = defaultDate.getDay();
-    var foundDay = -1;
+      var foundDay = -1;
 
     var regexSunday = /([^a-z]+|^)(on |this )*(sun|sunday)([^a-z]+|$)/;
     var regexMonday = /([^a-z]+|^)(on |this )*(monday|mon)([^a-z]+|$)/;
@@ -118,14 +116,25 @@ Cally = function(text, currentdate){
     }
     if(foundDay > -1)
     {
-      var diff = 0;
-      if(currentDay >= foundDay)
+      this.setDayOfWeek(foundDay,nextFound)
+    }
+
+  }
+
+  // sets day of week, e.g. "0" for Sunday, "1" for Monday
+  this.setDayOfWeek = function(day,nextFound)
+  {
+      var defaultDate = this.date ? this.date : new Date();
+      var currentDay = defaultDate.getDay();
+      var diff = 0; // Number of days away the found day is
+
+      if(currentDay >= day)
       {
-        diff = foundDay + 7 - currentDay;
+        diff = day + 7 - currentDay;
       }
       else
       {
-        diff = foundDay - currentDay;
+        diff = day - currentDay;
       }
 
       if(nextFound)
@@ -138,7 +147,6 @@ Cally = function(text, currentdate){
           }
         }
         else {
-
           // if it's a sunday, all but "next sat" / "next sun" is >7 days away
           if((currentDay == 0) )
           {
@@ -156,13 +164,11 @@ Cally = function(text, currentdate){
         }
 
       }
-
       defaultDate.setDate(defaultDate.getDate() + diff);
       this.date = defaultDate;
       this.datefound = true;
-    }
-
   }
+
 
   this.findDateKeyword = function(){
     var defaultDate = this.date ? this.date : new Date();
