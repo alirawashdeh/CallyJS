@@ -12,7 +12,7 @@ buster.testCase("Date Tests", {
     buster.assert(!appt.datefound);
   },
 
-  "Can find monday, tuesday, wednesday, thursday, friday, saturday, sunday": function(){
+  "Day of week - Can find monday, tuesday, wednesday, thursday, friday, saturday, sunday": function(){
     var appt;
 
     date = new Date();
@@ -74,7 +74,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getDate() <= date.setDate(date.getDate() + 7));
   },
 
-  "Can find mon,tues,wed,thurs,fri,sat,sun": function(){
+  "Day of week - Can find mon,tues,wed,thurs,fri,sat,sun": function(){
     var appt;
 
     date = new Date();
@@ -160,7 +160,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
   },
 
-  "Can find next mon,tues,wed,thurs,fri,sat,sun": function(){
+  "Day of week - Can find next mon,tues,wed,thurs,fri,sat,sun": function(){
     var appt;
 
     //Monday
@@ -312,7 +312,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getDate() == 14);
   },
 
-  "Can ignore day of week embedded in other words": function(){
+  "Day of week - Can ignore day of week embedded in other words": function(){
     var appt;
 
     date = new Date();
@@ -325,7 +325,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
   },
 
-  "Can find a subject before a day of the week": function(){
+  "Day of week - Can find a subject before a day of the week": function(){
     var appt;
     appt = new Cally("Meet John Monday", new Date());
     buster.assert(appt.subjectfound);
@@ -334,7 +334,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find subject when there is a keyword prior to day of week": function(){
+  "Day of week - Can find subject when there is a keyword prior to day of week": function(){
     var appt;
     appt = new Cally("Meet John on Monday", new Date());
     buster.assert(appt.subjectfound);
@@ -350,7 +350,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find a subject before a day of the week with comma": function(){
+  "Day of week - can find a subject before a day of the week with comma": function(){
     var appt;
     appt = new Cally("Meet John, Monday", new Date());
     buster.assert(appt.subjectfound);
@@ -359,7 +359,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find keyword today": function(){
+  "Can find date keyword today": function(){
     var appt;
     appt = new Cally("Meet John today", new Date());
     buster.assert(appt.subjectfound);
@@ -369,7 +369,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find keyword tomorrow": function(){
+  "Can find date keyword tomorrow": function(){
     var appt;
 
     var date = new Date("August 31, 2016 00:00:00");
@@ -383,7 +383,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find keyword this afternoon": function(){
+  "Can find date keyword this afternoon": function(){
     var appt;
     appt = new Cally("Meet John this afternoon", new Date());
     buster.assert(appt.subjectfound);
@@ -396,7 +396,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find keyword tonight": function(){
+  "Can find date keyword tonight": function(){
     var appt;
     appt = new Cally("Meet John tonight", new Date());
     buster.assert(appt.subjectfound);
@@ -409,7 +409,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find keyword - this evening": function(){
+  "Can find date keyword - this evening": function(){
     var appt;
     appt = new Cally("Meet John this evening", new Date());
     buster.assert(appt.subjectfound);
@@ -422,7 +422,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find keyword - in the morning": function(){
+  "Can find date keyword - in the morning": function(){
     var appt;
 
     var date = new Date("August 31, 2016 00:00:00");
@@ -438,7 +438,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find keyword - next week": function(){
+  "Can find date keyword - next week": function(){
     var appt;
     
     var date = new Date("August 31, 2016 00:00:00");
@@ -452,7 +452,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Can find keyword - next month": function(){
+  "Can find date keyword - next month": function(){
     var appt;
     var date = new Date("August 31, 2016 00:00:00");
     appt = new Cally("Meet John next month", date);
@@ -466,7 +466,7 @@ buster.testCase("Date Tests", {
   },
 
 
-  "Can find keyword - next year": function(){
+  "Can find date keyword - next year": function(){
     var appt;
     var date = new Date("August 31, 2016 00:00:00");
     appt = new Cally("Meet John next year", date);

@@ -30,6 +30,7 @@ Cally = function(text, currentdate) {
     }
   };
 
+  // Find day of week e.g. Monday, Mon, Tuesday etc.
   this.findDayOfWeek = function() {
     var foundDay = -1;
 
@@ -107,7 +108,7 @@ Cally = function(text, currentdate) {
     return false;
   }
 
-  // sets day of week, e.g. "0" for Sunday, "1" for Monday
+  // Sets day of week, e.g. "0" for Sunday, "1" for Monday
   this.setDayOfWeek = function(day, nextFound) {
     var defaultDate = this.date ? this.date : new Date();
     var currentDay = defaultDate.getDay();
@@ -145,7 +146,7 @@ Cally = function(text, currentdate) {
     this.datefound = true;
   }
 
-
+  // Find date keyword - e.g. Today, Tomorrow, Next Week
   this.findDateKeyword = function() {
     var defaultDate = this.date ? this.date : new Date();
 
@@ -221,6 +222,7 @@ Cally = function(text, currentdate) {
     }
   }
 
+  // Find time keyword - e.g. Morning, Afternoon, Evening
   this.findTimeKeyword = function() {
     var regexMorning = /([^a-z]+|^)(morning)([^a-z]+|$)/;
     var regexAfternoon = /([^a-z]+|^)(afternoon)([^a-z]+|$)/;
@@ -246,9 +248,7 @@ Cally = function(text, currentdate) {
         }
       }
     }
-
   }
-
 
   this.setSubjectEndPos = function(pos) {
     if (pos < subjectend) {
