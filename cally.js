@@ -26,6 +26,7 @@ Cally = function(text, currentdate) {
         this.findDateKeyword(); //e.g. Tonight, Tomorrow, Next Year
       }
       this.findTimeKeyword(); // e.g. evening, morning
+      this.findTimeNumber(); // e.g. 3PM, 15:00
       this.populateSubject(); // e.g. 'Meet John'
     }
   };
@@ -248,6 +249,22 @@ Cally = function(text, currentdate) {
         }
       }
     }
+  }
+
+  // Find time number - e.g. 3PM, 15:00
+  this.findTimeNumber = function() {
+
+    var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9]pm([^a-z]+|$)/);
+    var regexAtNumberPMMatch = /([0-1]*[0-9])pm/;
+
+    if (regexAtNumberPMPos > -1) {
+      this.timefound = true;
+      var matches = this.textStringLower.match(regexAtNumberPMMatch);
+      this.date.setHours(Number(matches[1]) + 12);
+      this.setSubjectEndPos(regexAtNumberPMPos);
+      console.log("Time found: XPM");
+    }
+
   }
 
   this.setSubjectEndPos = function(pos) {

@@ -60,6 +60,8 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John near Starbucks"
 
 ### Start Time
+* ~~Cater for "Meet John at 11PM"~~
+* Cater for "Meet John at 10AM"
 * Cater for "Meet John at fourteen hundred"
 * Cater for "Meet John at 1400"
 * Cater for "Meet John at 14:00"
@@ -67,7 +69,6 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John in one hour"
 * Cater for "Meet John in an hour"
 * Cater for "Meet John at midday"
-* Cater for "Meet John at 10AM"
 * Cater for "Meet John at 10:30"
 * Cater for "Meet John at half past 10"
 * Cater for "Meet John at half 10"
