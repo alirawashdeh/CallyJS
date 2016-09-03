@@ -31,81 +31,65 @@ Cally = function(text, currentdate){
   };
 
   this.findDayOfWeek = function(){
-      var foundDay = -1;
+    var foundDay = -1;
 
-    var regexSunday = /([^a-z]+|^)(on |this )*(sun|sunday)([^a-z]+|$)/;
-    var regexMonday = /([^a-z]+|^)(on |this )*(monday|mon)([^a-z]+|$)/;
-    var regexTuesday = /([^a-z]+|^)(on |this )*(tuesday|tues|tue)([^a-z]+|$)/;
-    var regexWednesday = /([^a-z]+|^)(on |this )*(wednesday|wed)([^a-z]+|$)/;
-    var regexThursday = /([^a-z]+|^)(on |this )*(thursday|thurs|thur|thu)([^a-z]+|$)/;
-    var regexFriday = /([^a-z]+|^)(on |this )*(friday|fri)([^a-z]+|$)/;
-    var regexSaturday = /([^a-z]+|^)(on |this )*(saturday|sat)([^a-z]+|$)/;
-    var regexToday = /([^a-z]+|^)(today)([^a-z]+|$)/;
+    var regexSundayPos = this.textStringLower.search(/([^a-z]+|^)(on |this )*(sun|sunday)([^a-z]+|$)/);
+    var regexMondayPos = this.textStringLower.search(/([^a-z]+|^)(on |this )*(monday|mon)([^a-z]+|$)/);
+    var regexTuesdayPos = this.textStringLower.search(/([^a-z]+|^)(on |this )*(tuesday|tues|tue)([^a-z]+|$)/);
+    var regexWednesdayPos = this.textStringLower.search(/([^a-z]+|^)(on |this )*(wednesday|wed)([^a-z]+|$)/);
+    var regexThursdayPos = this.textStringLower.search(/([^a-z]+|^)(on |this )*(thursday|thurs|thur|thu)([^a-z]+|$)/);
+    var regexFridayPos = this.textStringLower.search(/([^a-z]+|^)(on |this )*(friday|fri)([^a-z]+|$)/);
+    var regexSaturdayPos = this.textStringLower.search(/([^a-z]+|^)(on |this )*(saturday|sat)([^a-z]+|$)/);
+    var regexTodayPos = this.textStringLower.search(/([^a-z]+|^)(today)([^a-z]+|$)/);
 
-    var regexNext = /(next )$/;
     var nextFound = false;
 
-    if(this.textStringLower.search(regexSunday) > -1){
+    if(regexSundayPos > -1){
       foundDay = 0;
-      this.setSubjectEndPos(this.textStringLower.search(regexSunday));
-      if(this.textStringLower.substring(0,this.textStringLower.search(regexSunday)+1).search(regexNext) > -1)
-      {
-        nextFound = true;
-      }
+      this.setSubjectEndPos(regexSundayPos);
+      nextFound = this.findNext(regexSundayPos);
       console.log("Day of week found: Sunday");
-    } else {
-      if(this.textStringLower.search(regexMonday) > -1){
+    }
+    else {
+      if(regexMondayPos > -1){
         foundDay = 1;
-        this.setSubjectEndPos(this.textStringLower.search(regexMonday));
-        if(this.textStringLower.substring(0,this.textStringLower.search(regexMonday)+1).search(regexNext) > -1)
-        {
-          nextFound = true;
-        }
+        this.setSubjectEndPos(regexMondayPos);
+        nextFound = this.findNext(regexMondayPos);
         console.log("Day of week found: Monday");
-      } else {
-        if(this.textStringLower.search(regexTuesday) > -1){
+      }
+      else {
+        if(regexTuesdayPos> -1){
           foundDay = 2;
-          this.setSubjectEndPos(this.textStringLower.search(regexTuesday));
-          if(this.textStringLower.substring(0,this.textStringLower.search(regexTuesday)+1).search(regexNext) > -1)
-          {
-            nextFound = true;
-          }
+          this.setSubjectEndPos(regexTuesdayPos);
+          nextFound = this.findNext(regexTuesdayPos);
           console.log("Day of week found: Tuesday");
-        } else {
-          if(this.textStringLower.search(regexWednesday) > -1){
+        }
+        else {
+          if(regexWednesdayPos > -1){
             foundDay = 3;
-            this.setSubjectEndPos(this.textStringLower.search(regexWednesday));
-            if(this.textStringLower.substring(0,this.textStringLower.search(regexWednesday)+1).search(regexNext) > -1)
-            {
-              nextFound = true;
-            }
+            this.setSubjectEndPos(regexWednesdayPos);
+            nextFound = this.findNext(regexWednesdayPos);
             console.log("Day of week found: Wednesday");
-          } else {
-            if(this.textStringLower.search(regexThursday) > -1){
+          }
+          else {
+            if(regexThursdayPos > -1){
               foundDay = 4;
-              this.setSubjectEndPos(this.textStringLower.search(regexThursday));
-              if(this.textStringLower.substring(0,this.textStringLower.search(regexThursday)+1).search(regexNext) > -1)
-              {
-                nextFound = true;
-              }
+              this.setSubjectEndPos(regexThursdayPos);
+              nextFound = this.findNext(regexThursdayPos);
               console.log("Day of week found: Thursday");
-            } else {
-              if(this.textStringLower.search(regexFriday) > -1){
+            }
+            else {
+              if(regexFridayPos > -1){
                 foundDay = 5;
-                this.setSubjectEndPos(this.textStringLower.search(regexFriday));
-                if(this.textStringLower.substring(0,this.textStringLower.search(regexFriday)+1).search(regexNext) > -1)
-                {
-                  nextFound = true;
-                }
+                this.setSubjectEndPos(regexFridayPos);
+                nextFound = this.findNext(regexFridayPos);
                 console.log("Day of week found: Friday");
-              } else {
-                if(this.textStringLower.search(regexSaturday) > -1){
+              }
+              else {
+                if(regexSaturdayPos > -1){
                   foundDay = 6;
-                  this.setSubjectEndPos(this.textStringLower.search(regexSaturday));
-                  if(this.textStringLower.substring(0,this.textStringLower.search(regexSaturday)+1).search(regexNext) > -1)
-                  {
-                    nextFound = true;
-                  }
+                  this.setSubjectEndPos(regexSaturdayPos);
+                  nextFound = this.findNext(regexSaturdayPos);
                   console.log("Day of week found: Saturday");
                 }
               }
@@ -118,55 +102,64 @@ Cally = function(text, currentdate){
     {
       this.setDayOfWeek(foundDay,nextFound)
     }
+  }
 
+  // returns true if the word "next" appears immediately prior to the position supplied
+  // used for e.g. "next Monday"
+  this.findNext = function(dayPos){
+    var regexNext = /(next )$/;
+    if(this.textStringLower.substring(0,dayPos+1).search(regexNext) > -1){
+      return true;
+    }
+    return false;
   }
 
   // sets day of week, e.g. "0" for Sunday, "1" for Monday
   this.setDayOfWeek = function(day,nextFound)
   {
-      var defaultDate = this.date ? this.date : new Date();
-      var currentDay = defaultDate.getDay();
-      var diff = 0; // Number of days away the found day is
+    var defaultDate = this.date ? this.date : new Date();
+    var currentDay = defaultDate.getDay();
+    var diff = 0; // Number of days away the found day is
 
-      if(currentDay >= day)
-      {
-        diff = day + 7 - currentDay;
-      }
-      else
-      {
-        diff = day - currentDay;
-      }
+    if(currentDay >= day)
+    {
+      diff = day + 7 - currentDay;
+    }
+    else
+    {
+      diff = day - currentDay;
+    }
 
-      if(nextFound)
+    if(nextFound)
+    {
+      // if it's a Saturday, all but "next sat" should be >7 days away
+      if((currentDay == 6))
       {
-        // if it's a Saturday, all but "next sat" should be >7 days away
-        if((currentDay == 6))
+        if(diff < 7){
+          diff = diff + 7;
+        }
+      }
+      else {
+        // if it's a sunday, all but "next sat" / "next sun" is >7 days away
+        if((currentDay == 0) )
         {
-          if(diff < 7){
+          if(diff < 6){
             diff = diff + 7;
           }
         }
         else {
-          // if it's a sunday, all but "next sat" / "next sun" is >7 days away
-          if((currentDay == 0) )
+          // if found day is past Saturday, add 7 days
+          if(diff < (8-currentDay))
           {
-            if(diff < 6){
-              diff = diff + 7;
-            }
-          }
-          else {
-            // if found day is past Saturday, add 7 days
-            if(diff < (8-currentDay))
-            {
-              diff = diff + 7;
-            }
+            diff = diff + 7;
           }
         }
-
       }
-      defaultDate.setDate(defaultDate.getDate() + diff);
-      this.date = defaultDate;
-      this.datefound = true;
+
+    }
+    defaultDate.setDate(defaultDate.getDate() + diff);
+    this.date = defaultDate;
+    this.datefound = true;
   }
 
 
