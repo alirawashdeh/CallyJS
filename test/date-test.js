@@ -465,6 +465,20 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
+
+  "Can find keyword - next year": function(){
+    var appt;
+    var date = new Date("August 31, 2016 00:00:00");
+    appt = new Cally("Meet John next year", date);
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.datefound);
+
+    var dateClean = new Date("August 31, 2016 00:00:00");
+    dateClean.setYear(dateClean.getYear() + 1);
+    buster.assert(appt.date.getYear() == dateClean.getYear());
+    buster.assert(appt.subject == "Meet John");
+  },
+
   "Can find time keywords - morning": function(){
     var appt;
     var date = new Date("August 31, 2016 00:00:00");
