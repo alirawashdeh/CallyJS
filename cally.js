@@ -255,19 +255,34 @@ Cally = function(text, currentdate) {
   this.findTimeNumber = function() {
 
     var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9]pm([^a-z]+|$)/);
-    var regexAtNumberPMMatch = /([0-1]*[0-9])pm/;
+    var regexAtNumberPMorAMMatch = /([0-1]*[0-9])(pm|am)/;
+    var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9]am([^a-z]+|$)/);
+
     var time = 0;
 
     if (regexAtNumberPMPos > -1) {
       this.timefound = true;
-      var matches = this.textStringLower.match(regexAtNumberPMMatch);
+      var matches = this.textStringLower.match(regexAtNumberPMorAMMatch);
       time = Number(matches[1]) + 12;
-      if(time == 24){
+      if (time == 24) {
         time = 12;
       }
       this.date.setHours(time);
       this.setSubjectEndPos(regexAtNumberPMPos);
       console.log("Time found: XPM");
+    } else {
+      if (regexAtNumberAMPos > -1) {
+        this.timefound = true;
+        var matches = this.textStringLower.match(regexAtNumberPMorAMMatch);
+        time = Number(matches[1]);
+        if (time == 12) {
+          time = 0;
+        }
+        this.date.setHours(time);
+        this.setSubjectEndPos(regexAtNumberAMPos);
+        console.log("Time found: XAM");
+      }
+
     }
 
   }
