@@ -254,9 +254,9 @@ Cally = function(text, currentdate) {
   // Find time number - e.g. 3PM, 15:00
   this.findTimeNumber = function() {
 
-    var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9]pm([^a-z]+|$)/);
-    var regexAtNumberPMorAMMatch = /([0-1]*[0-9])(pm|am)/;
-    var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9]am([^a-z]+|$)/);
+    var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](pm| pm)([^a-z]+|$)/);
+    var regexAtNumberPMorAMMatch = /([0-1]*[0-9])( pm|pm| am|am)/;
+    var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](am| am)([^a-z]+|$)/);
 
     var time = 0;
 

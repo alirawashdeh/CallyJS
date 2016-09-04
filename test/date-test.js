@@ -559,6 +559,12 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getHours() == 23);
     buster.assert(appt.subject == "Meet John");
 
+    appt = new Cally("Meet John at 11 PM", new Date());
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.timefound);
+    buster.assert(appt.date.getHours() == 23);
+    buster.assert(appt.subject == "Meet John");
+
     appt = new Cally("Meet John at 12PM", new Date());
     buster.assert(appt.subjectfound);
     buster.assert(appt.timefound);
@@ -575,6 +581,12 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subjectfound);
     buster.assert(appt.timefound);
     buster.assert(appt.date.getHours() == 0);
+    buster.assert(appt.subject == "Meet John");
+
+    appt = new Cally("Meet John at 3 AM", new Date());
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.timefound);
+    buster.assert(appt.date.getHours() == 3);
     buster.assert(appt.subject == "Meet John");
 
   }
