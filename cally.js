@@ -210,7 +210,7 @@ Cally = function(text, currentdate) {
                 } else {
                   if (regexNextYearPos > -1) {
                     this.datefound = true;
-                    this.date.setYear(defaultDate.getYear() + 1);
+                    this.date.setFullYear(defaultDate.getFullYear() + 1);
                     this.setSubjectEndPos(regexNextYearPos);
                     console.log("Day of week found: Next Year");
                   }

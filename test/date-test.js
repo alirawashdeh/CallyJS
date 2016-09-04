@@ -474,8 +474,8 @@ buster.testCase("Date Tests", {
     buster.assert(appt.datefound);
 
     var dateClean = new Date("August 31, 2016 00:00:00");
-    dateClean.setYear(dateClean.getYear() + 1);
-    buster.assert(appt.date.getYear() == dateClean.getYear());
+    dateClean.setFullYear(dateClean.getFullYear() + 1);
+    buster.assert(appt.date.getFullYear() == dateClean.getFullYear());
     buster.assert(appt.subject == "Meet John");
   },
 
