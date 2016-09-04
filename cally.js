@@ -255,38 +255,52 @@ Cally = function(text, currentdate) {
   this.findTimeNumber = function() {
 
     var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(pm| pm)([^a-z]+|$)/);
-    var regexAtNumberPMorAMMatch = /([0-1]*[0-9])(:([0-5][0-9]))?( pm|pm| am|am)/;
     var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(am| am)([^a-z]+|$)/);
+    var regexAtNumber24HrPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])([^a-z]+|$)/);
+    var regexAtNumberPMorAMMatch = /([0-1]*[0-9])(:([0-5][0-9]))?( pm|pm| am|am)/;
+    var regexAtNumberMatch = /([0-1]*[0-9])(:([0-5][0-9]))/;
 
-    var time = 0;
+    var hours = 0;
 
     if (regexAtNumberPMPos > -1) {
       this.timefound = true;
       var matches = this.textStringLower.match(regexAtNumberPMorAMMatch);
-      time = Number(matches[1]) + 12;
-      if (time == 24) {
-        time = 12;
+      hours = Number(matches[1]) + 12;
+      if (hours == 24) {
+        hours = 12;
       }
-      this.date.setHours(time);
+      this.date.setHours(hours);
       if (matches[3] != null) {
-          this.date.setMinutes(Number(matches[3]));
-        }
+        this.date.setMinutes(Number(matches[3]));
+      }
       this.setSubjectEndPos(regexAtNumberPMPos);
       console.log("Time found: XPM");
     } else {
       if (regexAtNumberAMPos > -1) {
         this.timefound = true;
         var matches = this.textStringLower.match(regexAtNumberPMorAMMatch);
-        time = Number(matches[1]);
-        if (time == 12) {
-          time = 0;
+        hours = Number(matches[1]);
+        if (hours == 12) {
+          hours = 0;
         }
-        this.date.setHours(time);
+        this.date.setHours(hours);
         if (matches[3] != null) {
           this.date.setMinutes(Number(matches[3]));
         }
         this.setSubjectEndPos(regexAtNumberAMPos);
         console.log("Time found: XAM");
+      } else {
+        if (regexAtNumber24HrPos > -1) {
+          this.timefound = true;
+          var matches = this.textStringLower.match(regexAtNumberMatch);
+          hours = Number(matches[1]);
+          this.date.setHours(hours);
+          if (matches[3] != null) {
+            this.date.setMinutes(Number(matches[3]));
+          }
+          this.setSubjectEndPos(regexAtNumber24HrPos);
+          console.log("Time found: XX:XX");
+        }
       }
     }
   }

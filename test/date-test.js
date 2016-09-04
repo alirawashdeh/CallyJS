@@ -616,6 +616,13 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getHours() == 15);
     buster.assert(appt.date.getMinutes() == 1);
     buster.assert(appt.subject == "Meet John");
+
+    appt = new Cally("Meet John 14:39", new Date());
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.timefound);
+    buster.assert(appt.date.getHours() == 14);
+    buster.assert(appt.date.getMinutes() == 39);
+    buster.assert(appt.subject == "Meet John");
   }
 
 });
