@@ -254,9 +254,9 @@ Cally = function(text, currentdate) {
   // Find time number - e.g. 3PM, 15:00
   this.findTimeNumber = function() {
 
-    var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](pm| pm)([^a-z]+|$)/);
-    var regexAtNumberPMorAMMatch = /([0-1]*[0-9])( pm|pm| am|am)/;
-    var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](am| am)([^a-z]+|$)/);
+    var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(pm| pm)([^a-z]+|$)/);
+    var regexAtNumberPMorAMMatch = /([0-1]*[0-9])(:([0-5][0-9]))?( pm|pm| am|am)/;
+    var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(am| am)([^a-z]+|$)/);
 
     var time = 0;
 
@@ -268,6 +268,9 @@ Cally = function(text, currentdate) {
         time = 12;
       }
       this.date.setHours(time);
+      if (matches[3] != null) {
+          this.date.setMinutes(Number(matches[3]));
+        }
       this.setSubjectEndPos(regexAtNumberPMPos);
       console.log("Time found: XPM");
     } else {
@@ -279,12 +282,13 @@ Cally = function(text, currentdate) {
           time = 0;
         }
         this.date.setHours(time);
+        if (matches[3] != null) {
+          this.date.setMinutes(Number(matches[3]));
+        }
         this.setSubjectEndPos(regexAtNumberAMPos);
         console.log("Time found: XAM");
       }
-
     }
-
   }
 
   this.setSubjectEndPos = function(pos) {

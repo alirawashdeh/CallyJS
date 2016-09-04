@@ -63,7 +63,7 @@ $ node_modules/buster/bin/buster-test
 * ~~Cater for "Meet John at 11PM"~~
 * ~~Cater for "Meet John at 10AM"~~
 * ~~Cater for "Meet John at 10 AM"~~
-* Cater for "Meet John at 10:00AM"
+* ~~Cater for "Meet John at 10:00AM"~~
 * Cater for "Meet John at 1400"
 * Cater for "Meet John at 14:00"
 * Cater for "Meet John at fourteen hundred"

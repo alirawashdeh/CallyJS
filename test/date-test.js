@@ -551,7 +551,7 @@ buster.testCase("Date Tests", {
     buster.assert(appt.subject == "Meet John");
   },
 
-  "Time - 11PM, 12PM, 3AM": function(){
+  "Time - 11PM, 12PM, 3AM, 10:00AM, 10:30, 14:30, 6:30PM": function(){
     var appt;
     appt = new Cally("Meet John at 11PM", new Date());
     buster.assert(appt.subjectfound);
@@ -589,6 +589,33 @@ buster.testCase("Date Tests", {
     buster.assert(appt.date.getHours() == 3);
     buster.assert(appt.subject == "Meet John");
 
+    appt = new Cally("Meet John 10:30AM", new Date());
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.timefound);
+    buster.assert(appt.date.getHours() == 10);
+    buster.assert(appt.date.getMinutes() == 30);
+    buster.assert(appt.subject == "Meet John");
+
+    appt = new Cally("Meet John 10:55 AM", new Date());
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.timefound);
+    buster.assert(appt.date.getHours() == 10);
+    buster.assert(appt.date.getMinutes() == 55);
+    buster.assert(appt.subject == "Meet John");
+
+    appt = new Cally("Meet John 10:55PM", new Date());
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.timefound);
+    buster.assert(appt.date.getHours() == 22);
+    buster.assert(appt.date.getMinutes() == 55);
+    buster.assert(appt.subject == "Meet John");
+
+    appt = new Cally("Meet John 03:01 PM", new Date());
+    buster.assert(appt.subjectfound);
+    buster.assert(appt.timefound);
+    buster.assert(appt.date.getHours() == 15);
+    buster.assert(appt.date.getMinutes() == 1);
+    buster.assert(appt.subject == "Meet John");
   }
 
 });
