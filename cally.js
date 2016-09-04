@@ -225,26 +225,26 @@ Cally = function(text, currentdate) {
 
   // Find time keyword - e.g. Morning, Afternoon, Evening
   this.findTimeKeyword = function() {
-    var regexMorning = /([^a-z]+|^)(morning)([^a-z]+|$)/;
-    var regexAfternoon = /([^a-z]+|^)(afternoon)([^a-z]+|$)/;
-    var regexNight = /([^a-z]+|^)(night)|(evening)([^a-z]+|$)/;
+    var regexMorningPos = this.textStringLower.search(/([^a-z]+|^)(morning)([^a-z]+|$)/);
+    var regexAfternoonPos = this.textStringLower.search(/([^a-z]+|^)(afternoon)([^a-z]+|$)/);
+    var regexNightPos = this.textStringLower.search(/([^a-z]+|^)(night)|(evening)([^a-z]+|$)/);
 
-    if (this.textStringLower.search(regexMorning) > -1) {
+    if (regexMorningPos > -1) {
       this.timefound = true;
       this.date.setHours(MORNING_TIME);
-      this.setSubjectEndPos(this.textStringLower.search(regexMorning));
+      this.setSubjectEndPos(regexMorningPos);
       console.log("Day of week found: Morning");
     } else {
-      if (this.textStringLower.search(regexAfternoon) > -1) {
+      if (regexAfternoonPos > -1) {
         this.timefound = true;
         this.date.setHours(AFTERNOON_TIME);
-        this.setSubjectEndPos(this.textStringLower.search(regexAfternoon));
+        this.setSubjectEndPos(regexAfternoonPos);
         console.log("Day of week found: Afternoon");
       } else {
-        if (this.textStringLower.search(regexNight) > -1) {
+        if (regexNightPos > -1) {
           this.timefound = true;
           this.date.setHours(EVENING_TIME);
-          this.setSubjectEndPos(this.textStringLower.search(regexNight));
+          this.setSubjectEndPos(regexNightPos);
           console.log("Day of week found: Night / Evening");
         }
       }
