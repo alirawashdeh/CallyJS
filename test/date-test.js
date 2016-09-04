@@ -169,6 +169,8 @@ buster.testCase("Date Tests", {
         appt = new Cally("Meet John next mon", date);
         buster.assert(appt.datefound);
         buster.assert(appt.date.getDate() == 8);
+        buster.assert(appt.subjectfound == true);
+        buster.assert(appt.subject == "Meet John");
 
         date = new Date("August 01, 2016 00:00:00");
         appt = new Cally("Meet John next tues", date);

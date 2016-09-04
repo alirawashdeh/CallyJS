@@ -103,8 +103,9 @@ Cally = function(text, currentdate) {
   // returns true if the word "next" appears immediately prior to the position supplied
   // used for e.g. "next Monday"
   this.findNext = function(dayPos) {
-    var regexNext = /(next )$/;
-    if (this.textStringLower.substring(0, dayPos + 1).search(regexNext) > -1) {
+    var regexNextPos = this.textStringLower.substring(0, dayPos + 1).search(/(next )$/);
+    if (regexNextPos > -1) {
+       this.setSubjectEndPos(regexNextPos);
       return true;
     }
     return false;
