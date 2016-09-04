@@ -256,9 +256,9 @@ Cally = function(text, currentdate) {
 
     var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(pm| pm)([^a-z]+|$)/);
     var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(am| am)([^a-z]+|$)/);
-    var regexAtNumber24HrPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])([^a-z]+|$)/);
+    var regexAtNumber24HrPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-2]*[0-9](:[0-5][0-9])([^a-z]+|$)/);
     var regexAtNumberPMorAMMatch = /([0-1]*[0-9])(:([0-5][0-9]))?( pm|pm| am|am)/;
-    var regexAtNumberMatch = /([0-1]*[0-9])(:([0-5][0-9]))/;
+    var regexAtNumberMatch = /([0-2]*[0-9])(:([0-5][0-9]))/;
 
     var hours = 0;
 
