@@ -161,6 +161,9 @@ Cally = function(text, currentdate) {
     var regexNextWeekPos = this.textStringLower.search(/([^a-z]+|^)(next week)([^a-z]+|$)/);
     var regexNextMonthPos = this.textStringLower.search(/([^a-z]+|^)(next month)([^a-z]+|$)/);
     var regexNextYearPos = this.textStringLower.search(/([^a-z]+|^)(next year)([^a-z]+|$)/);
+    var regexInXDaysMatch = /([^a-z]+|^)(in )([1-9][0-9]*)( days| day)([^a-z]+|$)/;
+    var regexInXDaysPos = this.textStringLower.search(regexInXDaysMatch);
+
 
     if (regexTodayPos > -1) {
       // Keep the default date.
@@ -215,7 +218,20 @@ Cally = function(text, currentdate) {
                     this.date.setFullYear(defaultDate.getFullYear() + 1);
                     this.setSubjectEndPos(regexNextYearPos);
                     console.log("Day of week found: Next Year");
+                  } else {
+                  if (regexInXDaysPos > -1) {
+                    this.datefound = true;
+
+                    var matches = this.textStringLower.match(regexInXDaysMatch);
+                    if(matches[3] != null)
+                    {
+                    this.datefound = true;
+                    this.date.setDate(defaultDate.getDate() + Number(matches[3]));
+                    }
+                    this.setSubjectEndPos(regexInXDaysPos);
+                    console.log("Day of week found: In X Days");
                   }
+                }
                 }
               }
             }

@@ -37,7 +37,10 @@ $ node_modules/buster/bin/buster-test
 * ~~Cater for "Meet John next week"~~
 * ~~Cater for "Meet John next month"~~
 * ~~Cater for "Meet John next year"~~
-* Cater for "Meet John in three days"
+* ~~Cater for "Meet John in three days"~~
+* Cater for "Meet John in three weeks"
+* Cater for "Meet John in three months"
+* Cater for "Meet John in three years"
 * Cater for "Meet John in 10 weeks"
 * Cater for "Meet John on Monday next week"
 * Cater for "Meet John Nov 12"
@@ -81,6 +84,7 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John at 10 o'clock tonight"
 * Cater for "Meet John at 10 tonight"
 * Cater for "Meet John starting at 14:00"
+* Cater for "Meet John @ 10:00AM"
 
 ### Finish Time
 * Cater for "Meet John at 10:00 for 1 hour"

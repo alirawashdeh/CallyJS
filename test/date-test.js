@@ -482,6 +482,22 @@ buster.testCase("Date Tests", {
         buster.assert(appt.subject == "Meet John");
     },
 
+       "Can find date keyword - in X days": function() {
+        var appt;
+        appt = new Cally("Meet John in 3 days", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 3);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John in 20 days", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        console.log(appt.date.getDate() + "%%%%%%%");
+        buster.assert(appt.date.getDate() == 20);
+        buster.assert(appt.subject == "Meet John");
+    },
+
     "Can find time keywords - morning": function() {
         var appt;
         var date = new Date("August 31, 2016 00:00:00");
