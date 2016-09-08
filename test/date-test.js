@@ -243,7 +243,6 @@ buster.testCase("Date Tests", {
         date = new Date("August 06, 2016 00:00:00");
         appt = new Cally("Meet John next mon", date);
         buster.assert(appt.datefound);
-        console.log("********" + appt.date.getDate());
         buster.assert(appt.date.getDate() == 15);
 
         date = new Date("August 06, 2016 00:00:00");
@@ -493,10 +492,57 @@ buster.testCase("Date Tests", {
         appt = new Cally("Meet John in 20 days", new Date("August 31, 2016 00:00:00"));
         buster.assert(appt.subjectfound);
         buster.assert(appt.datefound);
-        console.log(appt.date.getDate() + "%%%%%%%");
         buster.assert(appt.date.getDate() == 20);
         buster.assert(appt.subject == "Meet John");
     },
+
+    "Can find date keyword - in X weeks": function() {
+        var appt;
+        appt = new Cally("Meet John in 1 week", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 7);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John in 20 weeks", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 18);
+        buster.assert(appt.date.getMonth() == 0)
+        buster.assert(appt.subject == "Meet John");
+    },
+
+    "Can find date keyword - in X months": function() {
+        var appt;
+        appt = new Cally("Meet John in 1 month", new Date("December 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getMonth() == 0);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John in 20 months", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getMonth() == 4);
+        buster.assert(appt.date.getFullYear() == 2018);
+        buster.assert(appt.subject == "Meet John");
+    },
+
+        "Can find date keyword - in X years": function() {
+        var appt;
+        appt = new Cally("Meet John in 1 year", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getFullYear() == 2017);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John in 20 years", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getFullYear() == 2036);
+        buster.assert(appt.subject == "Meet John");
+    },
+
 
     "Can find time keywords - morning": function() {
         var appt;

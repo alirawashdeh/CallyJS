@@ -105,7 +105,7 @@ Cally = function(text, currentdate) {
   this.findNext = function(dayPos) {
     var regexNextPos = this.textStringLower.substring(0, dayPos + 1).search(/(next )$/);
     if (regexNextPos > -1) {
-       this.setSubjectEndPos(regexNextPos);
+      this.setSubjectEndPos(regexNextPos);
       return true;
     }
     return false;
@@ -163,6 +163,12 @@ Cally = function(text, currentdate) {
     var regexNextYearPos = this.textStringLower.search(/([^a-z]+|^)(next year)([^a-z]+|$)/);
     var regexInXDaysMatch = /([^a-z]+|^)(in )([1-9][0-9]*)( days| day)([^a-z]+|$)/;
     var regexInXDaysPos = this.textStringLower.search(regexInXDaysMatch);
+    var regexInXWeeksMatch = /([^a-z]+|^)(in )([1-9][0-9]*)( weeks| week)([^a-z]+|$)/;
+    var regexInXWeeksPos = this.textStringLower.search(regexInXWeeksMatch);
+    var regexInXMonthsMatch = /([^a-z]+|^)(in )([1-9][0-9]*)( months| month)([^a-z]+|$)/;
+    var regexInXMonthsPos = this.textStringLower.search(regexInXMonthsMatch);
+    var regexInXYearsMatch = /([^a-z]+|^)(in )([1-9][0-9]*)( years| year)([^a-z]+|$)/;
+    var regexInXYearsPos = this.textStringLower.search(regexInXYearsMatch);
 
 
     if (regexTodayPos > -1) {
@@ -219,19 +225,54 @@ Cally = function(text, currentdate) {
                     this.setSubjectEndPos(regexNextYearPos);
                     console.log("Day of week found: Next Year");
                   } else {
-                  if (regexInXDaysPos > -1) {
-                    this.datefound = true;
+                    if (regexInXDaysPos > -1) {
+                      this.datefound = true;
 
-                    var matches = this.textStringLower.match(regexInXDaysMatch);
-                    if(matches[3] != null)
-                    {
-                    this.datefound = true;
-                    this.date.setDate(defaultDate.getDate() + Number(matches[3]));
+                      var matches = this.textStringLower.match(regexInXDaysMatch);
+                      if (matches[3] != null) {
+                        this.datefound = true;
+                        this.date.setDate(defaultDate.getDate() + Number(matches[3]));
+                      }
+                      this.setSubjectEndPos(regexInXDaysPos);
+                      console.log("Day of week found: In X Days");
+                    } else {
+                      if (regexInXWeeksPos > -1) {
+                        this.datefound = true;
+
+                        var matches = this.textStringLower.match(regexInXWeeksMatch);
+                        if (matches[3] != null) {
+                          this.datefound = true;
+                          this.date.setDate(defaultDate.getDate() + (Number(matches[3]) * 7));
+                        }
+                        this.setSubjectEndPos(regexInXWeeksPos);
+                        console.log("Day of week found: In X Weeks");
+                      } else {
+                        if (regexInXMonthsPos > -1) {
+                          this.datefound = true;
+
+                          var matches = this.textStringLower.match(regexInXMonthsMatch);
+                          if (matches[3] != null) {
+                            this.datefound = true;
+                            this.date.setMonth(defaultDate.getMonth() + Number(matches[3]));
+                          }
+                          this.setSubjectEndPos(regexInXMonthsPos);
+                          console.log("Day of week found: In X Months");
+                        } else {
+                          if (regexInXYearsPos > -1) {
+                            this.datefound = true;
+
+                            var matches = this.textStringLower.match(regexInXYearsMatch);
+                            if (matches[3] != null) {
+                              this.datefound = true;
+                              this.date.setFullYear(defaultDate.getFullYear() + Number(matches[3]));
+                            }
+                            this.setSubjectEndPos(regexInXYearsPos);
+                            console.log("Day of week found: In X Years");
+                          }
+                        }
+                      }
                     }
-                    this.setSubjectEndPos(regexInXDaysPos);
-                    console.log("Day of week found: In X Days");
                   }
-                }
                 }
               }
             }
@@ -266,13 +307,13 @@ Cally = function(text, currentdate) {
           this.setSubjectEndPos(regexNightPos);
           console.log("Day of week found: Night / Evening");
         } else {
-        if (regexNoonPos > -1) {
-          this.timefound = true;
-          this.date.setHours(MIDDAY_TIME);
-          this.setSubjectEndPos(regexNoonPos);
-          console.log("Day of week found: Noon / Midday");
+          if (regexNoonPos > -1) {
+            this.timefound = true;
+            this.date.setHours(MIDDAY_TIME);
+            this.setSubjectEndPos(regexNoonPos);
+            console.log("Day of week found: Noon / Midday");
+          }
         }
-      }
       }
     }
   }
