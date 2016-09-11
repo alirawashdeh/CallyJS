@@ -43,8 +43,8 @@ $ node_modules/buster/bin/buster-test
 * ~~Cater for "Meet John in 3 years"~~
 * ~~Cater for "Meet John 12th Nov"~~
 * ~~Cater for "Meet John 12th November"~~
-* Cater for "Meet John 12th of November"~~
-* Cater for "Meet John Nov 12"
+* ~~Cater for "Meet John 12th of November"~~
+* ~~Cater for "Meet John 12 Nov"~~
 * Cater for "Meet John on the 10th of November"
 
 ### Start Time
