@@ -26,6 +26,7 @@ Cally = function(text, currentdate) {
       if (!this.datefound) {
         this.findDateKeyword(); //e.g. Tonight, Tomorrow, Next Year
       }
+      this.findDateAndMonth();
       this.findTimeKeyword(); // e.g. evening, morning
       this.findTimeNumber(); // e.g. 3PM, 15:00
       this.populateSubject(); // e.g. 'Meet John'
@@ -148,6 +149,173 @@ Cally = function(text, currentdate) {
     this.date = defaultDate;
     this.datefound = true;
   }
+
+  // Find date and month - e.g. on 12th November
+  this.findDateAndMonth = function() {
+    var defaultDate = this.date ? this.date : new Date();
+
+
+    var regexJanMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( jan| january)([^a-z]+|$)/;
+    var regexJanPos = this.textStringLower.search(regexJanMatch);
+    var regexFebMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( feb| february)([^a-z]+|$)/;
+    var regexFebPos = this.textStringLower.search(regexFebMatch);
+    var regexMarMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( mar| march)([^a-z]+|$)/;
+    var regexMarPos = this.textStringLower.search(regexMarMatch);
+    var regexAprMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( apr| april)([^a-z]+|$)/;
+    var regexAprPos = this.textStringLower.search(regexAprMatch);
+    var regexMayMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( may| may)([^a-z]+|$)/;
+    var regexMayPos = this.textStringLower.search(regexMayMatch);
+    var regexJunMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( jun| june)([^a-z]+|$)/;
+    var regexJunPos = this.textStringLower.search(regexJunMatch);
+    var regexJulMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( jul| july)([^a-z]+|$)/;
+    var regexJulPos = this.textStringLower.search(regexJulMatch);
+    var regexAugMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( aug| august)([^a-z]+|$)/;
+    var regexAugPos = this.textStringLower.search(regexAugMatch);
+    var regexSepMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( sep| september)([^a-z]+|$)/;
+    var regexSepPos = this.textStringLower.search(regexSepMatch);
+    var regexOctMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( oct| october)([^a-z]+|$)/;
+    var regexOctPos = this.textStringLower.search(regexOctMatch);
+    var regexNovMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( nov| november)([^a-z]+|$)/;
+    var regexNovPos = this.textStringLower.search(regexNovMatch);
+    var regexDecMatch = /([^a-z0-9]+|^)(on )?([1-9][0-9]*)(st|nd|th)?( dec| december)([^a-z]+|$)/;
+    var regexDecPos = this.textStringLower.search(regexDecMatch);
+
+    var newDate;
+    var found = false;
+    var matches = null;
+
+    if (regexJanPos > -1) {
+      found = true;
+      matches = this.textStringLower.match(regexJanMatch);
+      if (matches[3] != null) {
+        newDate = new Date(this.date.getFullYear(), 0, Number(matches[3]));
+      }
+      this.setSubjectEndPos(regexJanPos);
+      console.log("Date and Month found: January");
+    } else {
+      if (regexFebPos > -1) {
+        found = true;
+        matches = this.textStringLower.match(regexFebMatch);
+        if (matches[3] != null) {
+          newDate = new Date(this.date.getFullYear(), 1, Number(matches[3]));
+        }
+        this.setSubjectEndPos(regexFebPos);
+        console.log("Date and Month found: February");
+      } else {
+        if (regexMarPos > -1) {
+          found = true;
+          matches = this.textStringLower.match(regexMarMatch);
+          if (matches[3] != null) {
+            newDate = new Date(this.date.getFullYear(), 2, Number(matches[3]));
+          }
+          this.setSubjectEndPos(regexMarPos);
+          console.log("Date and Month found: March");
+        } else {
+          if (regexAprPos > -1) {
+            found = true;
+            matches = this.textStringLower.match(regexAprMatch);
+            if (matches[3] != null) {
+              newDate = new Date(this.date.getFullYear(), 3, Number(matches[3]));
+            }
+            this.setSubjectEndPos(regexAprPos);
+            console.log("Date and Month found: April");
+          } else {
+            if (regexMayPos > -1) {
+              found = true;
+              matches = this.textStringLower.match(regexMayMatch);
+              if (matches[3] != null) {
+                newDate = new Date(this.date.getFullYear(), 4, Number(matches[3]));
+              }
+              this.setSubjectEndPos(regexMayPos);
+              console.log("Date and Month found: May");
+            } else {
+              if (regexJunPos > -1) {
+                found = true;
+                matches = this.textStringLower.match(regexJunMatch);
+                if (matches[3] != null) {
+                  newDate = new Date(this.date.getFullYear(), 5, Number(matches[3]));
+                }
+                this.setSubjectEndPos(regexJunPos);
+                console.log("Date and Month found: Jun");
+              } else {
+                if (regexJulPos > -1) {
+                  found = true;
+                  matches = this.textStringLower.match(regexJulMatch);
+                  if (matches[3] != null) {
+                    newDate = new Date(this.date.getFullYear(), 6, Number(matches[3]));
+                  }
+                  this.setSubjectEndPos(regexJulPos);
+                  console.log("Date and Month found: Jul");
+                } else {
+                  if (regexAugPos > -1) {
+                    found = true;
+                    matches = this.textStringLower.match(regexAugMatch);
+                    if (matches[3] != null) {
+                      newDate = new Date(this.date.getFullYear(), 7, Number(matches[3]));
+                    }
+                    this.setSubjectEndPos(regexAugPos);
+                    console.log("Date and Month found: August");
+                  } else {
+                    if (regexSepPos > -1) {
+                      found = true;
+                      matches = this.textStringLower.match(regexSepMatch);
+                      if (matches[3] != null) {
+                        newDate = new Date(this.date.getFullYear(), 8, Number(matches[3]));
+                      }
+                      this.setSubjectEndPos(regexSepPos);
+                      console.log("Date and Month found: September");
+                    } else {
+                    if (regexOctPos > -1) {
+                      found = true;
+                      matches = this.textStringLower.match(regexOctMatch);
+                      if (matches[3] != null) {
+                        newDate = new Date(this.date.getFullYear(), 9, Number(matches[3]));
+                      }
+                      this.setSubjectEndPos(regexOctPos);
+                      console.log("Date and Month found: October");
+                    } else {
+                    if (regexNovPos > -1) {
+                      found = true;
+                      matches = this.textStringLower.match(regexNovMatch);
+                      if (matches[3] != null) {
+                        newDate = new Date(this.date.getFullYear(), 10, Number(matches[3]));
+                      }
+                      this.setSubjectEndPos(regexNovPos);
+                      console.log("Date and Month found: November");
+                    } else {
+                    if (regexDecPos > -1) {
+                      found = true;
+                      matches = this.textStringLower.match(regexDecMatch);
+                      if (matches[3] != null) {
+                        newDate = new Date(this.date.getFullYear(), 11, Number(matches[3]));
+                      }
+                      this.setSubjectEndPos(regexDecPos);
+                      console.log("Date and Month found: December");
+                    }
+                  }
+                  }
+                  }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (found) {
+      this.datefound = true;
+      if (newDate < this.date) {
+        this.date.setFullYear(newDate.getFullYear() + 1);
+      }
+      this.date.setDate(newDate.getDate());
+      this.date.setMonth(newDate.getMonth());
+
+    }
+  }
+
+
 
   // Find date keyword - e.g. Today, Tomorrow, Next Week
   this.findDateKeyword = function() {

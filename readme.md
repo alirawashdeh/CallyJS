@@ -41,16 +41,40 @@ $ node_modules/buster/bin/buster-test
 * ~~Cater for "Meet John in 3 weeks"~~
 * ~~Cater for "Meet John in 3 months"~~
 * ~~Cater for "Meet John in 3 years"~~
-* Cater for "Meet John on Monday next week"
+* ~~Cater for "Meet John 12th Nov"~~
+* ~~Cater for "Meet John 12th November"~~
+* Cater for "Meet John 12th of November"~~
 * Cater for "Meet John Nov 12"
+* Cater for "Meet John on the 10th of November"
+
+### Start Time
+* ~~Cater for "Meet John at 11PM"~~
+* ~~Cater for "Meet John at 10AM"~~
+* ~~Cater for "Meet John at 10 AM"~~
+* ~~Cater for "Meet John at 10:00AM"~~
+* ~~Cater for "Meet John at 14:00"~~
+* ~~Cater for "Meet John at midday"~~
+* ~~Cater for "Meet John at noon"~~
+* Cater for "Meet John at 1400"
+* Cater for "Meet John at 3"
+* Cater for "Meet John in 1 hour"
+* Cater for "Meet John in an hour"
+* Cater for "Meet John at half past 10"
+* Cater for "Meet John at half 10"
+* Cater for "Meet John at quarter to 5"
+* Cater for "Meet John at 10 tonight"
+* Cater for "Meet John tonight at 10"
+* Cater for "Meet John this afternoon at 3"
+* Cater for "Meet John starting at 14:00"
+* Cater for "Meet John in one hour"
+
+## Do Later
+
+### Start Date
 * Cater for "Meet John 12/11"
 * Cater for "Meet John 11/12"
-* Cater for "Meet John 12th Nov"
-* Cater for "Meet John 12th November"
-* Cater for "Meet John 12th of November"
-* Cater for "Meet John on the 10th of November"
-* Cater for "Meet John this afternoon at 3"
-* Cater for "Meet John this tonight at 9"
+* Cater for "Meet John Tuesday week"
+* Cater for "Meet John on Monday next week"
 * Cater for "Meet John in three days"
 * Cater for "Meet John in three weeks"
 * Cater for "Meet John in three months"
@@ -66,28 +90,11 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John near Starbucks"
 
 ### Start Time
-* ~~Cater for "Meet John at 11PM"~~
-* ~~Cater for "Meet John at 10AM"~~
-* ~~Cater for "Meet John at 10 AM"~~
-* ~~Cater for "Meet John at 10:00AM"~~
-* ~~Cater for "Meet John at 14:00"~~
-* ~~Cater for "Meet John at midday"~~
-* ~~Cater for "Meet John at noon"~~
-* Cater for "Meet John at 1400"
-* Cater for "Meet John at 3"
+* Cater for "Meet John @ 10:00AM"
 * Cater for "Meet John at three"
 * Cater for "Meet John at fourteen hundred"
-* Cater for "Meet John in 1 hour"
-* Cater for "Meet John in one hour"
-* Cater for "Meet John in an hour"
-* Cater for "Meet John at half past 10"
-* Cater for "Meet John at half 10"
-* Cater for "Meet John at quarter to 5"
 * Cater for "Meet John at 10 o'clock"
 * Cater for "Meet John at 10 o'clock tonight"
-* Cater for "Meet John at 10 tonight"
-* Cater for "Meet John starting at 14:00"
-* Cater for "Meet John @ 10:00AM"
 
 ### Finish Time
 * Cater for "Meet John at 10:00 for 1 hour"

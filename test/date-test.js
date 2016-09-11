@@ -543,6 +543,107 @@ buster.testCase("Date Tests", {
         buster.assert(appt.subject == "Meet John");
     },
 
+        "Can find date and month": function() {
+        var appt;
+        appt = new Cally("Meet John on 2nd January", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 2);
+        buster.assert(appt.date.getMonth() == 0);
+        buster.assert(appt.date.getFullYear() == 2017);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John 12th Feb", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 12);
+        buster.assert(appt.date.getMonth() == 1);
+        buster.assert(appt.date.getFullYear() == 2017);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John 21st Mar", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 21);
+        buster.assert(appt.date.getMonth() == 2);
+        buster.assert(appt.date.getFullYear() == 2017);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John on 12th April", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 12);
+        buster.assert(appt.date.getMonth() == 3);
+        buster.assert(appt.date.getFullYear() == 2017);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John on 2nd May", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 2);
+        buster.assert(appt.date.getMonth() == 4);
+        buster.assert(appt.date.getFullYear() == 2017);
+        buster.assert(appt.subject == "Meet John");
+        
+        appt = new Cally("Meet John on 1st June", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 1);
+        buster.assert(appt.date.getMonth() == 5);
+        buster.assert(appt.date.getFullYear() == 2017);
+        buster.assert(appt.subject == "Meet John");
+      
+        appt = new Cally("Meet John on 5th July", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 5);
+        buster.assert(appt.date.getMonth() == 6);
+        buster.assert(appt.date.getFullYear() == 2017);
+        buster.assert(appt.subject == "Meet John");
+          
+        appt = new Cally("Meet John on 30th August", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 30);
+        buster.assert(appt.date.getMonth() == 7);
+        buster.assert(appt.date.getFullYear() == 2017);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John on 20th September", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 20);
+        buster.assert(appt.date.getMonth() == 8);
+        buster.assert(appt.date.getFullYear() == 2016);
+        buster.assert(appt.subject == "Meet John");
+          
+        appt = new Cally("Meet John on 20th October", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 20);
+        buster.assert(appt.date.getMonth() == 9);
+        buster.assert(appt.date.getFullYear() == 2016);
+        buster.assert(appt.subject == "Meet John");
+          
+        appt = new Cally("Meet John on 20th Nov", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 20);
+        buster.assert(appt.date.getMonth() == 10);
+        buster.assert(appt.date.getFullYear() == 2016);
+        buster.assert(appt.subject == "Meet John");
+          
+
+        appt = new Cally("Meet John on 20th December", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 20);
+        buster.assert(appt.date.getMonth() == 11);
+        buster.assert(appt.date.getFullYear() == 2016);
+        buster.assert(appt.subject == "Meet John");
+          
+    },
+
 
     "Can find time keywords - morning": function() {
         var appt;
