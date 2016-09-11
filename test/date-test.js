@@ -650,6 +650,14 @@ buster.testCase("Date Tests", {
         buster.assert(appt.date.getMonth() == 11);
         buster.assert(appt.date.getFullYear() == 2016);
         buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John on the 20th of December", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.datefound);
+        buster.assert(appt.date.getDate() == 20);
+        buster.assert(appt.date.getMonth() == 11);
+        buster.assert(appt.date.getFullYear() == 2016);
+        buster.assert(appt.subject == "Meet John");
     },
 
 
