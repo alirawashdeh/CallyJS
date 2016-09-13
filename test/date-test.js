@@ -763,7 +763,7 @@ buster.testCase("Date Tests", {
         buster.assert(appt.subject == "Meet John");
     },
 
-    "Time - 11PM, 12PM, 3AM, 10:00AM, 10:30, 14:30, 6:30PM": function() {
+    "Time - 11PM, 12PM, 3AM, 10:00AM, 10:30, 14:30, 6:30PM, 0900": function() {
         var appt;
         appt = new Cally("Meet John at 11PM", new Date());
         buster.assert(appt.subjectfound);
@@ -841,6 +841,14 @@ buster.testCase("Date Tests", {
         buster.assert(appt.timefound);
         buster.assert(appt.date.getHours() == 23);
         buster.assert(appt.date.getMinutes() == 59);
+        buster.assert(appt.subject == "Meet John");
+
+
+        appt = new Cally("Meet John at 0800", new Date());
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 8);
+        buster.assert(appt.date.getMinutes() == 0);
         buster.assert(appt.subject == "Meet John");
     }
 

@@ -492,8 +492,10 @@ Cally = function(text, currentdate) {
     var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(pm| pm)([^a-z]+|$)/);
     var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(am| am)([^a-z]+|$)/);
     var regexAtNumber24HrPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-2]*[0-9](:[0-5][0-9])([^a-z]+|$)/);
+    var regex4DigitTimePos = this.textStringLower.search(/([^a-z]+|^)(at )[0-2][0-9]([0-5][0-9])([^a-z]+|$)/);
     var regexAtNumberPMorAMMatch = /([0-1]*[0-9])(:([0-5][0-9]))?( pm|pm| am|am)/;
     var regexAtNumberMatch = /([0-2]*[0-9])(:([0-5][0-9]))/;
+    var regex4DigitMatch = /([0-2][0-9])([0-5][0-9])/;
 
     var hours = 0;
 
@@ -535,7 +537,19 @@ Cally = function(text, currentdate) {
           }
           this.setSubjectEndPos(regexAtNumber24HrPos);
           console.log("Time found: XX:XX");
+        } else {
+        if (regex4DigitTimePos > -1) {
+          this.timefound = true;
+          var matches = this.textStringLower.match(regex4DigitMatch);
+          hours = Number(matches[1]);
+          this.date.setHours(hours);
+          if (matches[2] != null) {
+            this.date.setMinutes(Number(matches[2]));
+          }
+          this.setSubjectEndPos(regex4DigitTimePos);
+          console.log("Time found: XXXX");
         }
+      }
       }
     }
   }
