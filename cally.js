@@ -30,7 +30,12 @@ Cally = function(text, currentdate) {
       this.findTimeNumber(); // e.g. 3PM, 15:00
       this.populateSubject(); // e.g. 'Meet John'
     }
+
+    if (this.timefound == false) {
+      this.date.setHours(0, 0, 0, 0);
+    }
   };
+
 
   // Find day of week e.g. Monday, Mon, Tuesday etc.
   this.findDayOfWeek = function() {
@@ -354,7 +359,7 @@ Cally = function(text, currentdate) {
           // Keep the default date
           this.datefound = true;
           this.timefound = true;
-          this.date.setHours(AFTERNOON_TIME);
+          this.date.setHours(AFTERNOON_TIME,0,0,0);
           this.setSubjectEndPos(regexThisAfternoonPos);
           console.log("Day of week found: This Afternoon");
         } else {
@@ -362,7 +367,7 @@ Cally = function(text, currentdate) {
             // Keep the default date
             this.datefound = true;
             this.timefound = true;
-            this.date.setHours(EVENING_TIME);
+            this.date.setHours(EVENING_TIME,0,0,0);
             this.setSubjectEndPos(regexTonightPos);
             console.log("Day of week found: Tonight / This Evening");
           } else {
@@ -370,7 +375,7 @@ Cally = function(text, currentdate) {
               this.datefound = true;
               this.timefound = true;
               this.date.setDate(defaultDate.getDate() + 1);
-              this.date.setHours(MORNING_TIME);
+              this.date.setHours(MORNING_TIME,0,0,0);
               this.setSubjectEndPos(regexInTheMorningPos);
               console.log("Day of week found: In the Morning");
             } else {
@@ -458,25 +463,25 @@ Cally = function(text, currentdate) {
 
     if (regexMorningPos > -1) {
       this.timefound = true;
-      this.date.setHours(MORNING_TIME);
+      this.date.setHours(MORNING_TIME,0,0,0);
       this.setSubjectEndPos(regexMorningPos);
       console.log("Day of week found: Morning");
     } else {
       if (regexAfternoonPos > -1) {
         this.timefound = true;
-        this.date.setHours(AFTERNOON_TIME);
+        this.date.setHours(AFTERNOON_TIME,0,0,0);
         this.setSubjectEndPos(regexAfternoonPos);
         console.log("Day of week found: Afternoon");
       } else {
         if (regexNightPos > -1) {
           this.timefound = true;
-          this.date.setHours(EVENING_TIME);
+          this.date.setHours(EVENING_TIME,0,0,0);
           this.setSubjectEndPos(regexNightPos);
           console.log("Day of week found: Night / Evening");
         } else {
           if (regexNoonPos > -1) {
             this.timefound = true;
-            this.date.setHours(MIDDAY_TIME);
+            this.date.setHours(MIDDAY_TIME,0,0,0);
             this.setSubjectEndPos(regexNoonPos);
             console.log("Day of week found: Noon / Midday");
           }
@@ -507,7 +512,7 @@ Cally = function(text, currentdate) {
       if (hours == 24) {
         hours = 12;
       }
-      this.date.setHours(hours);
+      this.date.setHours(hours,0,0,0);
       if (matches[3] != null) {
         this.date.setMinutes(Number(matches[3]));
       }
@@ -521,7 +526,7 @@ Cally = function(text, currentdate) {
         if (hours == 12) {
           hours = 0;
         }
-        this.date.setHours(hours);
+        this.date.setHours(hours,0,0,0);
         if (matches[3] != null) {
           this.date.setMinutes(Number(matches[3]));
         }
@@ -532,7 +537,7 @@ Cally = function(text, currentdate) {
           this.timefound = true;
           var matches = this.textStringLower.match(regexAtNumberMatch);
           hours = Number(matches[1]);
-          this.date.setHours(hours);
+          this.date.setHours(hours,0,0,0);
           if (matches[3] != null) {
             this.date.setMinutes(Number(matches[3]));
           }
@@ -543,7 +548,7 @@ Cally = function(text, currentdate) {
             this.timefound = true;
             var matches = this.textStringLower.match(regex4DigitMatch);
             hours = Number(matches[1]);
-            this.date.setHours(hours);
+            this.date.setHours(hours,0,0,0);
             if (matches[2] != null) {
               this.date.setMinutes(Number(matches[2]));
             }
@@ -558,7 +563,7 @@ Cally = function(text, currentdate) {
                 if (hours <= this.date.getHours()) {
                   hours += 12;
                 }
-                this.date.setHours(hours);
+                this.date.setHours(hours,0,0,0);
                 this.setSubjectEndPos(regex2DigitTimePos);
                 console.log("Time found: XX");
               }
