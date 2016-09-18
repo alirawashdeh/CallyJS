@@ -462,6 +462,8 @@ Cally = function(text, currentdate) {
     var regexNoonPos = this.textStringLower.search(/([^a-z]+|^)(noon)|(midday)([^a-z]+|$)/);
     var regexInXHoursMatch = /([^a-z]+|^)(in )([1-9][0-9]*)( hours| hour)([^a-z]+|$)/;
     var regexInXHoursPos = this.textStringLower.search(regexInXHoursMatch);
+    var regexInXMinutesMatch = /([^a-z]+|^)(in )([1-9][0-9]*)( minutes| minute)([^a-z]+|$)/;
+    var regexInXMinutesPos = this.textStringLower.search(regexInXMinutesMatch);
 
     if (regexMorningPos > -1) {
       this.timefound = true;
@@ -491,10 +493,20 @@ Cally = function(text, currentdate) {
               var matches = this.textStringLower.match(regexInXHoursMatch);
               if (matches[3] != null) {
                 this.timefound = true;
-              this.date.setHours(this.date.getHours() +  Number(matches[3]), this.date.getMinutes(), this.date.getSeconds(), this.date.getMilliseconds());
+                this.date.setHours(this.date.getHours() + Number(matches[3]));
               }
               this.setSubjectEndPos(regexInXHoursPos);
               console.log("Time Keyword found: In X Hours");
+            } else {
+              if (regexInXMinutesPos > -1) {
+                var matches = this.textStringLower.match(regexInXMinutesMatch);
+                if (matches[3] != null) {
+                  this.timefound = true;
+                  this.date.setMinutes(this.date.getMinutes() + Number(matches[3]));
+                }
+                this.setSubjectEndPos(regexInXMinutesPos);
+                console.log("Time Keyword found: In X Minutes");
+              }
             }
           }
         }

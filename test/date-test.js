@@ -763,6 +763,26 @@ buster.testCase("Date Tests", {
         buster.assert(appt.subject == "Meet John");
     },
 
+
+    "Can find time keywords - in X minutes": function() {
+        var appt;
+        var date = new Date("August 31, 2016 00:00:00");
+        appt = new Cally("Meet John in 1 minute", date);
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.subject == "Meet John");
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getMinutes() == 1);
+
+        appt = new Cally("Meet John in 18 minutes", new Date("August 31, 2016 21:53:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 22);
+        buster.assert(appt.date.getMinutes() == 11);
+        buster.assert(appt.date.getDate() == 31);
+        buster.assert(appt.date.getMonth() == 7);
+        buster.assert(appt.subject == "Meet John");
+    },
+
     "Time - 11PM, 12PM, 3AM, 10:00AM, 10:30, 14:30, 6:30PM, 0900": function() {
         var appt;
         appt = new Cally("Meet John at 11PM", new Date());
