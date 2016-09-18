@@ -1,14 +1,14 @@
 {
-	"name": "cally",
-	"version": "1.0.0",
-	"description": "Parses natural language to create a calendar appointment",
-	"dependencies": {
-		"buster": "0.7.18"
-	},
-	"author": {
-		"name": "Ali Rawashdeh"
-	},
-	"scripts": {
-		"test": "buster-test"
-	}
+  "name": "cally",
+  "version": "1.0.0",
+  "description": "Parses natural language to create a calendar appointment",
+  "dependencies": {
+    "mocha": "^3.0.2"
+  },
+  "author": {
+    "name": "Ali Rawashdeh"
+  },
+  "scripts": {
+    "test": "mocha test"
+  }
 }
