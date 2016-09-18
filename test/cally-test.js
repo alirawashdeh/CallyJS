@@ -1,11 +1,11 @@
+"use strict";
 var assert = require('assert');
-var cally = require('../cally.js');
+var Cally = require('../cally.js');
 
 var eveningTime = 20;
 var morningTime = 10;
 var afternoonTime = 14;
 var noonTime = 12;
-
 
 describe('Cally', function() {
     it("Can not find day of week date", function() {
@@ -18,7 +18,7 @@ describe('Cally', function() {
 
         var appt;
 
-        date = new Date();
+        var date = new Date();
         appt = new Cally("Meet John monday", new Date());
         assert(appt.datefound);
         assert(appt.date.getDay() == 1);
@@ -63,7 +63,7 @@ describe('Cally', function() {
         date = new Date();
         appt = new Cally("Meet John sunday", new Date());
         assert(appt.datefound);
-        assert(appt.date.getDay() == 0);
+        assert(appt.date.getDay() === 0);
         assert(appt.date.getTime() > date.getTime());
         assert(appt.date.getDate() <= date.setDate(date.getDate() + 7));
     });
@@ -71,7 +71,7 @@ describe('Cally', function() {
     it("Day of week - Can find mon,tues,wed,thurs,fri,sat,sun", function() {
         var appt;
 
-        date = new Date();
+        var date = new Date();
         appt = new Cally("Meet John mon", new Date());
 
         assert(appt.datefound);
@@ -139,7 +139,7 @@ describe('Cally', function() {
         date = new Date();
         appt = new Cally("Meet John sun", new Date());
         assert(appt.datefound);
-        assert(appt.date.getDay() == 0);
+        assert(appt.date.getDay() === 0);
         assert(appt.date.getTime() > date.getTime());
         assert(appt.date.getTime() <= date.setDate(date.getDate() + 7));
     });
@@ -148,11 +148,11 @@ describe('Cally', function() {
         var appt;
 
         //Monday
-        date = new Date("August 01, 2016 00:00:00");
+        var date = new Date("August 01, 2016 00:00:00");
         appt = new Cally("Meet John next mon", date);
         assert(appt.datefound);
         assert(appt.date.getDate() == 8);
-        assert(appt.subjectfound == true);
+        assert(appt.subjectfound === true);
         assert(appt.subject == "Meet John");
 
         date = new Date("August 01, 2016 00:00:00");
@@ -301,7 +301,7 @@ describe('Cally', function() {
 
         var appt;
 
-        date = new Date();
+        var date = new Date();
         date.setHours(0, 0, 0, 0);
         appt = new Cally("Meet John to discuss the Sunshine Monster Virtue Wedding Thunder Fritter Saturn Cafe on Saturday", new Date());
 
@@ -492,7 +492,7 @@ describe('Cally', function() {
         assert(appt.subjectfound);
         assert(appt.datefound);
         assert(appt.date.getDate() == 18);
-        assert(appt.date.getMonth() == 0)
+        assert(appt.date.getMonth() === 0);
         assert(appt.subject == "Meet John");
     });
 
@@ -501,7 +501,7 @@ describe('Cally', function() {
         appt = new Cally("Meet John in 1 month", new Date("December 31, 2016 00:00:00"));
         assert(appt.subjectfound);
         assert(appt.datefound);
-        assert(appt.date.getMonth() == 0);
+        assert(appt.date.getMonth() === 0);
         assert(appt.subject == "Meet John");
 
         appt = new Cally("Meet John in 20 months", new Date("August 31, 2016 00:00:00"));
@@ -533,7 +533,7 @@ describe('Cally', function() {
         assert(appt.subjectfound);
         assert(appt.datefound);
         assert(appt.date.getDate() == 2);
-        assert(appt.date.getMonth() == 0);
+        assert(appt.date.getMonth() === 0);
         assert(appt.date.getFullYear() == 2017);
         assert(appt.subject == "Meet John");
 
@@ -813,7 +813,7 @@ describe('Cally', function() {
         appt = new Cally("Meet John at 12AM", new Date());
         assert(appt.subjectfound);
         assert(appt.timefound);
-        assert(appt.date.getHours() == 0);
+        assert(appt.date.getHours() === 0);
         assert(appt.subject == "Meet John");
 
         appt = new Cally("Meet John at 3 AM", new Date());
@@ -868,7 +868,7 @@ describe('Cally', function() {
         assert(appt.subjectfound);
         assert(appt.timefound);
         assert(appt.date.getHours() == 8);
-        assert(appt.date.getMinutes() == 0);
+        assert(appt.date.getMinutes() === 0);
         assert(appt.subject == "Meet John");
 
         appt = new Cally("Meet John at 7", new Date("August 31, 2016 00:00:00"));
@@ -987,7 +987,7 @@ describe('Cally', function() {
         assert(appt.subjectfound);
         assert(appt.timefound);
         assert(appt.date.getHours() == 21);
-        assert(appt.date.getMinutes() == 0);
+        assert(appt.date.getMinutes() === 0);
         assert(appt.date.getDate() == 1);
         assert(appt.date.getMonth() == 8);
         assert(appt.subject == "Meet John");

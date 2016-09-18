@@ -1,9 +1,10 @@
+"use strict";
 const AFTERNOON_TIME = 14;
 const EVENING_TIME = 20;
 const MORNING_TIME = 10;
 const MIDDAY_TIME = 12;
 
-Cally = function(text, currentdate) {
+function Cally(text, currentdate) {
 
   this.date = currentdate;
   this.datefound = false;
@@ -17,8 +18,8 @@ Cally = function(text, currentdate) {
   var subjectstart = 0;
   var subjectend;
 
-  var textString = "";
-  var textStringLower = "";
+  this.textString = "";
+  this.textStringLower = "";
 
   this.parse = function() {
     if (this.textString.length > 0) {
@@ -33,7 +34,7 @@ Cally = function(text, currentdate) {
       this.populateSubject(); // e.g. 'Meet John'
     }
 
-    if (this.timefound == false) {
+    if (this.timefound === false) {
       this.date.setHours(0, 0, 0, 0);
     }
   };
@@ -50,7 +51,6 @@ Cally = function(text, currentdate) {
     var regexThursdayPos = this.textStringLower.search(/([^a-z]+|^)(on |this )*(thursday|thurs|thur|thu)([^a-z]+|$)/);
     var regexFridayPos = this.textStringLower.search(/([^a-z]+|^)(on |this )*(friday|fri)([^a-z]+|$)/);
     var regexSaturdayPos = this.textStringLower.search(/([^a-z]+|^)(on |this )*(saturday|sat)([^a-z]+|$)/);
-    var regexTodayPos = this.textStringLower.search(/([^a-z]+|^)(today)([^a-z]+|$)/);
 
     var nextFound = false;
 
@@ -103,9 +103,9 @@ Cally = function(text, currentdate) {
       }
     }
     if (foundDay > -1) {
-      this.setDayOfWeek(foundDay, nextFound)
+      this.setDayOfWeek(foundDay, nextFound);
     }
-  }
+  };
 
   // returns true if the word "next" appears immediately prior to the position supplied
   // used for e.g. "next Monday"
@@ -116,7 +116,7 @@ Cally = function(text, currentdate) {
       return true;
     }
     return false;
-  }
+  };
 
   // Sets day of week, e.g. "0" for Sunday, "1" for Monday
   this.setDayOfWeek = function(day, nextFound) {
@@ -138,7 +138,7 @@ Cally = function(text, currentdate) {
         }
       } else {
         // if it's a sunday, all but "next sat" / "next sun" is >7 days away
-        if ((currentDay == 0)) {
+        if ((currentDay === 0)) {
           if (diff < 6) {
             diff = diff + 7;
           }
@@ -154,12 +154,10 @@ Cally = function(text, currentdate) {
     defaultDate.setDate(defaultDate.getDate() + diff);
     this.date = defaultDate;
     this.datefound = true;
-  }
+  };
 
   // Find date and month - e.g. on 12th November
   this.findDateAndMonth = function() {
-    var defaultDate = this.date ? this.date : new Date();
-
 
     var regexJanMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( jan| january)([^a-z]+|$)/;
     var regexJanPos = this.textStringLower.search(regexJanMatch);
@@ -193,7 +191,7 @@ Cally = function(text, currentdate) {
     if (regexJanPos > -1) {
       found = true;
       matches = this.textStringLower.match(regexJanMatch);
-      if (matches[3] != null) {
+      if (!!matches[3]) {
         newDate = new Date(this.date.getFullYear(), 0, Number(matches[3]));
       }
       this.setSubjectEndPos(regexJanPos);
@@ -202,7 +200,7 @@ Cally = function(text, currentdate) {
       if (regexFebPos > -1) {
         found = true;
         matches = this.textStringLower.match(regexFebMatch);
-        if (matches[3] != null) {
+        if (!!matches[3]) {
           newDate = new Date(this.date.getFullYear(), 1, Number(matches[3]));
         }
         this.setSubjectEndPos(regexFebPos);
@@ -211,7 +209,7 @@ Cally = function(text, currentdate) {
         if (regexMarPos > -1) {
           found = true;
           matches = this.textStringLower.match(regexMarMatch);
-          if (matches[3] != null) {
+          if (!!matches[3]) {
             newDate = new Date(this.date.getFullYear(), 2, Number(matches[3]));
           }
           this.setSubjectEndPos(regexMarPos);
@@ -220,7 +218,7 @@ Cally = function(text, currentdate) {
           if (regexAprPos > -1) {
             found = true;
             matches = this.textStringLower.match(regexAprMatch);
-            if (matches[3] != null) {
+            if (!!matches[3]) {
               newDate = new Date(this.date.getFullYear(), 3, Number(matches[3]));
             }
             this.setSubjectEndPos(regexAprPos);
@@ -229,7 +227,7 @@ Cally = function(text, currentdate) {
             if (regexMayPos > -1) {
               found = true;
               matches = this.textStringLower.match(regexMayMatch);
-              if (matches[3] != null) {
+              if (!!matches[3]) {
                 newDate = new Date(this.date.getFullYear(), 4, Number(matches[3]));
               }
               this.setSubjectEndPos(regexMayPos);
@@ -238,7 +236,7 @@ Cally = function(text, currentdate) {
               if (regexJunPos > -1) {
                 found = true;
                 matches = this.textStringLower.match(regexJunMatch);
-                if (matches[3] != null) {
+                if (!!matches[3]) {
                   newDate = new Date(this.date.getFullYear(), 5, Number(matches[3]));
                 }
                 this.setSubjectEndPos(regexJunPos);
@@ -247,7 +245,7 @@ Cally = function(text, currentdate) {
                 if (regexJulPos > -1) {
                   found = true;
                   matches = this.textStringLower.match(regexJulMatch);
-                  if (matches[3] != null) {
+                  if (!!matches[3]) {
                     newDate = new Date(this.date.getFullYear(), 6, Number(matches[3]));
                   }
                   this.setSubjectEndPos(regexJulPos);
@@ -256,7 +254,7 @@ Cally = function(text, currentdate) {
                   if (regexAugPos > -1) {
                     found = true;
                     matches = this.textStringLower.match(regexAugMatch);
-                    if (matches[3] != null) {
+                    if (!!matches[3]) {
                       newDate = new Date(this.date.getFullYear(), 7, Number(matches[3]));
                     }
                     this.setSubjectEndPos(regexAugPos);
@@ -265,7 +263,7 @@ Cally = function(text, currentdate) {
                     if (regexSepPos > -1) {
                       found = true;
                       matches = this.textStringLower.match(regexSepMatch);
-                      if (matches[3] != null) {
+                      if (!!matches[3]) {
                         newDate = new Date(this.date.getFullYear(), 8, Number(matches[3]));
                       }
                       this.setSubjectEndPos(regexSepPos);
@@ -274,7 +272,7 @@ Cally = function(text, currentdate) {
                       if (regexOctPos > -1) {
                         found = true;
                         matches = this.textStringLower.match(regexOctMatch);
-                        if (matches[3] != null) {
+                        if (!!matches[3]) {
                           newDate = new Date(this.date.getFullYear(), 9, Number(matches[3]));
                         }
                         this.setSubjectEndPos(regexOctPos);
@@ -283,7 +281,7 @@ Cally = function(text, currentdate) {
                         if (regexNovPos > -1) {
                           found = true;
                           matches = this.textStringLower.match(regexNovMatch);
-                          if (matches[3] != null) {
+                          if (!!matches[3]) {
                             newDate = new Date(this.date.getFullYear(), 10, Number(matches[3]));
                           }
                           this.setSubjectEndPos(regexNovPos);
@@ -292,7 +290,7 @@ Cally = function(text, currentdate) {
                           if (regexDecPos > -1) {
                             found = true;
                             matches = this.textStringLower.match(regexDecMatch);
-                            if (matches[3] != null) {
+                            if (!!matches[3]) {
                               newDate = new Date(this.date.getFullYear(), 11, Number(matches[3]));
                             }
                             this.setSubjectEndPos(regexDecPos);
@@ -319,7 +317,7 @@ Cally = function(text, currentdate) {
       this.date.setMonth(newDate.getMonth());
 
     }
-  }
+  };
 
 
 
@@ -343,7 +341,7 @@ Cally = function(text, currentdate) {
     var regexInXMonthsPos = this.textStringLower.search(regexInXMonthsMatch);
     var regexInXYearsMatch = /([^a-z]+|^)(in )([1-9][0-9]*)( years| year)([^a-z]+|$)/;
     var regexInXYearsPos = this.textStringLower.search(regexInXYearsMatch);
-
+    var matches;
 
     if (regexTodayPos > -1) {
       // Keep the default date.
@@ -404,8 +402,8 @@ Cally = function(text, currentdate) {
                     if (regexInXDaysPos > -1) {
                       this.datefound = true;
 
-                      var matches = this.textStringLower.match(regexInXDaysMatch);
-                      if (matches[3] != null) {
+                      matches = this.textStringLower.match(regexInXDaysMatch);
+                      if (!!matches[3]) {
                         this.datefound = true;
                         this.date.setDate(defaultDate.getDate() + Number(matches[3]));
                       }
@@ -415,8 +413,8 @@ Cally = function(text, currentdate) {
                       if (regexInXWeeksPos > -1) {
                         this.datefound = true;
 
-                        var matches = this.textStringLower.match(regexInXWeeksMatch);
-                        if (matches[3] != null) {
+                        matches = this.textStringLower.match(regexInXWeeksMatch);
+                        if (!!matches[3]) {
                           this.datefound = true;
                           this.date.setDate(defaultDate.getDate() + (Number(matches[3]) * 7));
                         }
@@ -426,8 +424,8 @@ Cally = function(text, currentdate) {
                         if (regexInXMonthsPos > -1) {
                           this.datefound = true;
 
-                          var matches = this.textStringLower.match(regexInXMonthsMatch);
-                          if (matches[3] != null) {
+                          matches = this.textStringLower.match(regexInXMonthsMatch);
+                          if (!!matches[3]) {
                             this.datefound = true;
                             this.date.setMonth(defaultDate.getMonth() + Number(matches[3]));
                           }
@@ -437,8 +435,8 @@ Cally = function(text, currentdate) {
                           if (regexInXYearsPos > -1) {
                             this.datefound = true;
 
-                            var matches = this.textStringLower.match(regexInXYearsMatch);
-                            if (matches[3] != null) {
+                            matches = this.textStringLower.match(regexInXYearsMatch);
+                            if (!!matches[3]) {
                               this.datefound = true;
                               this.date.setFullYear(defaultDate.getFullYear() + Number(matches[3]));
                             }
@@ -456,7 +454,7 @@ Cally = function(text, currentdate) {
         }
       }
     }
-  }
+  };
 
   // Find time keyword - e.g. Morning, Afternoon, Evening
   this.findTimeKeyword = function() {
@@ -468,6 +466,7 @@ Cally = function(text, currentdate) {
     var regexInXHoursPos = this.textStringLower.search(regexInXHoursMatch);
     var regexInXMinutesMatch = /([^a-z]+|^)(in )([1-9][0-9]*)( minutes| minute)([^a-z]+|$)/;
     var regexInXMinutesPos = this.textStringLower.search(regexInXMinutesMatch);
+    var matches;
 
     if (regexMorningPos > -1) {
       this.timefound = true;
@@ -496,8 +495,8 @@ Cally = function(text, currentdate) {
             console.log("Time Keyword found: Noon / Midday");
           } else {
             if (regexInXHoursPos > -1) {
-              var matches = this.textStringLower.match(regexInXHoursMatch);
-              if (matches[3] != null) {
+              matches = this.textStringLower.match(regexInXHoursMatch);
+              if (!!matches[3]) {
                 this.timefound = true;
                 this.date.setHours(this.date.getHours() + Number(matches[3]));
               }
@@ -505,8 +504,8 @@ Cally = function(text, currentdate) {
               console.log("Time Keyword found: In X Hours");
             } else {
               if (regexInXMinutesPos > -1) {
-                var matches = this.textStringLower.match(regexInXMinutesMatch);
-                if (matches[3] != null) {
+                matches = this.textStringLower.match(regexInXMinutesMatch);
+                if (!!matches[3]) {
                   this.timefound = true;
                   this.date.setMinutes(this.date.getMinutes() + Number(matches[3]));
                 }
@@ -518,7 +517,7 @@ Cally = function(text, currentdate) {
         }
       }
     }
-  }
+  };
 
   // Find time number - e.g. 3PM, 15:00
   this.findTimeNumber = function() {
@@ -539,17 +538,18 @@ Cally = function(text, currentdate) {
     var regexQuarterToMatch = /([^a-z]+|^)(at )*(quarter to )([1-9][0-9]*)([^a-z]+|$)/;
     var regexQuarterToPos = this.textStringLower.search(regexQuarterToMatch);
 
+    var matches;
     var hours = 0;
 
     if (regexAtNumberPMPos > -1) {
       this.timefound = true;
-      var matches = this.textStringLower.match(regexAtNumberPMorAMMatch);
+      matches = this.textStringLower.match(regexAtNumberPMorAMMatch);
       hours = Number(matches[1]) + 12;
       if (hours == 24) {
         hours = 12;
       }
       this.date.setHours(hours, 0, 0, 0);
-      if (matches[3] != null) {
+      if (!!matches[3]) {
         this.date.setMinutes(Number(matches[3]));
       }
       this.setSubjectEndPos(regexAtNumberPMPos);
@@ -557,13 +557,13 @@ Cally = function(text, currentdate) {
     } else {
       if (regexAtNumberAMPos > -1) {
         this.timefound = true;
-        var matches = this.textStringLower.match(regexAtNumberPMorAMMatch);
+        matches = this.textStringLower.match(regexAtNumberPMorAMMatch);
         hours = Number(matches[1]);
         if (hours == 12) {
           hours = 0;
         }
         this.date.setHours(hours, 0, 0, 0);
-        if (matches[3] != null) {
+        if (!!matches[3]) {
           this.date.setMinutes(Number(matches[3]));
         }
         this.setSubjectEndPos(regexAtNumberAMPos);
@@ -571,10 +571,10 @@ Cally = function(text, currentdate) {
       } else {
         if (regexAtNumber24HrPos > -1) {
           this.timefound = true;
-          var matches = this.textStringLower.match(regexAtNumberMatch);
+          matches = this.textStringLower.match(regexAtNumberMatch);
           hours = Number(matches[1]);
           this.date.setHours(hours, 0, 0, 0);
-          if (matches[3] != null) {
+          if (!!matches[3]) {
             this.date.setMinutes(Number(matches[3]));
           }
           this.setSubjectEndPos(regexAtNumber24HrPos);
@@ -582,10 +582,10 @@ Cally = function(text, currentdate) {
         } else {
           if (regex4DigitTimePos > -1) {
             this.timefound = true;
-            var matches = this.textStringLower.match(regex4DigitMatch);
+            matches = this.textStringLower.match(regex4DigitMatch);
             hours = Number(matches[1]);
             this.date.setHours(hours, 0, 0, 0);
-            if (matches[2] != null) {
+            if (matches[2] !== null) {
               this.date.setMinutes(Number(matches[2]));
             }
             this.setSubjectEndPos(regex4DigitTimePos);
@@ -593,7 +593,7 @@ Cally = function(text, currentdate) {
           } else {
             if (regex2DigitTimePos > -1) {
               this.timefound = true;
-              var matches = this.textStringLower.match(regex2DigitMatch);
+              matches = this.textStringLower.match(regex2DigitMatch);
               hours = Number(matches[3]);
               if (hours <= 12) {
                 if (!this.datefound && hours <= this.date.getHours()) {
@@ -606,7 +606,7 @@ Cally = function(text, currentdate) {
             } else {
               if (regexHalfPastPos > -1) {
                 this.timefound = true;
-                var matches = this.textStringLower.match(regexHalfPastMatch);
+                matches = this.textStringLower.match(regexHalfPastMatch);
                 hours = Number(matches[4]);
                 this.date.setHours(hours, 30, 0, 0);
                 this.setSubjectEndPos(regexHalfPastPos);
@@ -614,7 +614,7 @@ Cally = function(text, currentdate) {
               } else {
                 if (regexQuarterPastPos > -1) {
                   this.timefound = true;
-                  var matches = this.textStringLower.match(regexQuarterPastMatch);
+                  matches = this.textStringLower.match(regexQuarterPastMatch);
                   hours = Number(matches[4]);
                   this.date.setHours(hours, 15, 0, 0);
                   this.setSubjectEndPos(regexQuarterPastPos);
@@ -622,7 +622,7 @@ Cally = function(text, currentdate) {
                 } else {
                   if (regexQuarterToPos > -1) {
                     this.timefound = true;
-                    var matches = this.textStringLower.match(regexQuarterToMatch);
+                    matches = this.textStringLower.match(regexQuarterToMatch);
                     hours = Number(matches[4]) - 1;
                     this.date.setHours(hours, 45, 0, 0);
                     this.setSubjectEndPos(regexQuarterToPos);
@@ -641,24 +641,26 @@ Cally = function(text, currentdate) {
         this.date.setHours(this.date.getHours() + 12);
       }
     }
-  }
+  };
 
   this.setSubjectEndPos = function(pos) {
     if (pos < subjectend) {
       subjectend = pos;
     }
-  }
+  };
 
   this.populateSubject = function() {
     this.subject = this.textString.substring(subjectstart, subjectend).trim();
-    if ((this.subject != null) & (this.subject.length > 0)) {
+    if ((!!this.subject) & (this.subject.length > 0)) {
       this.subjectfound = true;
     }
-  }
+  };
 
   // Constructor
   this.textString = text;
   this.textStringLower = text.toLowerCase();
   subjectend = text.length;
   this.parse();
-};
+}
+
+module.exports = Cally;
