@@ -1,8 +1,8 @@
 "use strict";
-const AFTERNOON_TIME = 14;
-const EVENING_TIME = 20;
-const MORNING_TIME = 10;
-const MIDDAY_TIME = 12;
+var AFTERNOON_TIME = 14;
+var EVENING_TIME = 20;
+var MORNING_TIME = 10;
+var MIDDAY_TIME = 12;
 
 function Cally(text, currentdate) {
 
