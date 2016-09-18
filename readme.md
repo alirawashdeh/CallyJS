@@ -59,13 +59,12 @@ $ node_modules/buster/bin/buster-test
 * ~~Cater for "Meet John at 3"~~
 * ~~Cater for "Meet John in 1 hour"~~
 * ~~Cater for "Meet John in 30 minutes"~~
-* Cater for "Meet John in an hour"
+* ~~Cater for "Meet John tonight at 10"~~
+* ~~Cater for "Meet John this afternoon at 3"~~
 * Cater for "Meet John at half past 10"
 * Cater for "Meet John at half 10"
 * Cater for "Meet John at quarter to 5"
 * Cater for "Meet John at 10 tonight"
-* Cater for "Meet John tonight at 10"
-* Cater for "Meet John this afternoon at 3"
 * Cater for "Meet John starting at 14:00"
 
 
@@ -80,6 +79,7 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John in three weeks"
 * Cater for "Meet John in three months"
 * Cater for "Meet John in three years"
+* Cater for "Meet John in a day / week / month / year"
 
 ### Location
 * Cater for "Meet John at Starbucks"
@@ -97,6 +97,7 @@ $ node_modules/buster/bin/buster-test
 * Cater for "Meet John at 10 o'clock"
 * Cater for "Meet John at 10 o'clock tonight"
 * Cater for "Meet John in one hour"
+* Cater for "Meet John in an hour"
 
 ### Finish Time
 * Cater for "Meet John at 10:00 for 1 hour"

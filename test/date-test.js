@@ -909,6 +909,31 @@ buster.testCase("Date Tests", {
         buster.assert(appt.date.getMonth() == 8);
         buster.assert(appt.date.getFullYear() == 2016);
         buster.assert(appt.subject == "Meet John");
+    },
+
+        "Can find time combined with time of day - tonight at 8": function() {
+        var appt;
+        var date = new Date("August 31, 2016 00:00:00");
+        appt = new Cally("Meet John tonight at 8", date);
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.subject == "Meet John");
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 20);
+
+        appt = new Cally("Meet John tomorrow night at 9", new Date("August 31, 2016 10:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 21);
+        buster.assert(appt.date.getMinutes() == 0);
+        buster.assert(appt.date.getDate() == 1);
+        buster.assert(appt.date.getMonth() == 8);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John this afternoon at 4", new Date("August 31, 2016 10:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 16);
+        buster.assert(appt.subject == "Meet John");
     }
 
 });

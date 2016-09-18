@@ -12,6 +12,8 @@ Cally = function(text, currentdate) {
   this.subject = "";
   this.subjectfound = false;
 
+  this.pmKeywordFound = false; // set to true if "afternoon, evening, tonight" keywords found
+
   var subjectstart = 0;
   var subjectend;
 
@@ -361,6 +363,7 @@ Cally = function(text, currentdate) {
           this.timefound = true;
           this.date.setHours(AFTERNOON_TIME, 0, 0, 0);
           this.setSubjectEndPos(regexThisAfternoonPos);
+          this.pmKeywordFound = true;
           console.log("Day of week found: This Afternoon");
         } else {
           if (regexTonightPos > -1) {
@@ -369,6 +372,7 @@ Cally = function(text, currentdate) {
             this.timefound = true;
             this.date.setHours(EVENING_TIME, 0, 0, 0);
             this.setSubjectEndPos(regexTonightPos);
+            this.pmKeywordFound = true;
             console.log("Day of week found: Tonight / This Evening");
           } else {
             if (regexInTheMorningPos > -1) {
@@ -475,12 +479,14 @@ Cally = function(text, currentdate) {
         this.timefound = true;
         this.date.setHours(AFTERNOON_TIME, 0, 0, 0);
         this.setSubjectEndPos(regexAfternoonPos);
+            this.pmKeywordFound = true;
         console.log("Time Keyword found: Afternoon");
       } else {
         if (regexNightPos > -1) {
           this.timefound = true;
           this.date.setHours(EVENING_TIME, 0, 0, 0);
           this.setSubjectEndPos(regexNightPos);
+            this.pmKeywordFound = true;
           console.log("Time Keyword  found: Night / Evening");
         } else {
           if (regexNoonPos > -1) {
@@ -594,6 +600,13 @@ Cally = function(text, currentdate) {
             }
           }
         }
+      }
+    }
+
+    if(this.pmKeywordFound){
+      if(this.date.getHours() <= 12)
+      {
+        this.date.setHours(this.date.getHours() + 12);
       }
     }
   }
