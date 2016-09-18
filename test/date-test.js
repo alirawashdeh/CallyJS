@@ -873,6 +873,22 @@ buster.testCase("Date Tests", {
         buster.assert(appt.date.getMonth() == 7);
         buster.assert(appt.date.getFullYear() == 2016);
         buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John in 3 days at 11", new Date("August 31, 2016 21:53:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.date.getHours() == 11);
+        buster.assert(appt.date.getDate() == 3);
+        buster.assert(appt.date.getMonth() == 8);
+        buster.assert(appt.date.getFullYear() == 2016);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John in 3 days at 11:00", new Date("August 31, 2016 21:53:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.date.getHours() == 11);
+        buster.assert(appt.date.getDate() == 3);
+        buster.assert(appt.date.getMonth() == 8);
+        buster.assert(appt.date.getFullYear() == 2016);
+        buster.assert(appt.subject == "Meet John");
     }
 
 });

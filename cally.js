@@ -509,11 +509,11 @@ Cally = function(text, currentdate) {
     var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(am| am)([^a-z]+|$)/);
     var regexAtNumber24HrPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-2]*[0-9](:[0-5][0-9])([^a-z]+|$)/);
     var regex4DigitTimePos = this.textStringLower.search(/([^a-z]+|^)(at )[0-2][0-9]([0-5][0-9])([^a-z]+|$)/);
-    var regex2DigitTimePos = this.textStringLower.search(/([^a-z]+|^)(at )[0-1]*[0-9]([^a-z]+|$)/);
     var regexAtNumberPMorAMMatch = /([0-1]*[0-9])(:([0-5][0-9]))?( pm|pm| am|am)/;
     var regexAtNumberMatch = /([0-2]*[0-9])(:([0-5][0-9]))/;
     var regex4DigitMatch = /([0-2][0-9])([0-5][0-9])/;
-    var regex2DigitMatch = /([0-1]*[0-9])/;
+    var regex2DigitMatch = /([^a-z]+|^)(at )([0-1]*[0-9])([^a-z]+|$)/;
+    var regex2DigitTimePos = this.textStringLower.search(regex2DigitMatch);
 
     var hours = 0;
 
@@ -570,9 +570,9 @@ Cally = function(text, currentdate) {
             if (regex2DigitTimePos > -1) {
               this.timefound = true;
               var matches = this.textStringLower.match(regex2DigitMatch);
-              hours = Number(matches[1]);
+              hours = Number(matches[3]);
               if (hours <= 12) {
-                if (hours <= this.date.getHours()) {
+                if (!this.datefound && hours <= this.date.getHours()) {
                   hours += 12;
                 }
                 this.date.setHours(hours, 0, 0, 0);
