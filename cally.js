@@ -534,8 +534,10 @@ Cally = function(text, currentdate) {
     var regex2DigitTimePos = this.textStringLower.search(regex2DigitMatch);
     var regexHalfPastMatch = /([^a-z]+|^)(at )*(half past |half )([1-9][0-9]*)([^a-z]+|$)/;
     var regexHalfPastPos = this.textStringLower.search(regexHalfPastMatch);
-    var regexQuarterPastMatch = /([^a-z]+|^)(at )*(quarter past |quarter )([1-9][0-9]*)([^a-z]+|$)/;
+    var regexQuarterPastMatch = /([^a-z]+|^)(at )*(quarter past )([1-9][0-9]*)([^a-z]+|$)/;
     var regexQuarterPastPos = this.textStringLower.search(regexQuarterPastMatch);
+    var regexQuarterToMatch = /([^a-z]+|^)(at )*(quarter to )([1-9][0-9]*)([^a-z]+|$)/;
+    var regexQuarterToPos = this.textStringLower.search(regexQuarterToMatch);
 
     var hours = 0;
 
@@ -617,7 +619,15 @@ Cally = function(text, currentdate) {
                   this.date.setHours(hours, 15, 0, 0);
                   this.setSubjectEndPos(regexQuarterPastPos);
                   console.log("Time found: Quarter past X");
-
+                } else {
+                  if (regexQuarterToPos > -1) {
+                    this.timefound = true;
+                    var matches = this.textStringLower.match(regexQuarterToMatch);
+                    hours = Number(matches[4]) - 1;
+                    this.date.setHours(hours, 45, 0, 0);
+                    this.setSubjectEndPos(regexQuarterToPos);
+                    console.log("Time found: Quarter to X");
+                  }
                 }
               }
             }

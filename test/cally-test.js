@@ -944,6 +944,23 @@ buster.testCase("Date Tests", {
         buster.assert(appt.subject == "Meet John");
     },
 
+    "Can find time - quarter to X": function() {
+        var appt;
+        appt = new Cally("Meet John at quarter to 9", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 8);
+        buster.assert(appt.date.getMinutes() == 45);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John quarter to 8", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 7);
+        buster.assert(appt.date.getMinutes() == 45);
+        buster.assert(appt.subject == "Meet John");
+    },
+
      "Can find time - starting at": function() {
         var appt;
         var date = new Date("August 31, 2016 00:00:00");

@@ -68,7 +68,7 @@ $ npm test
 * ~~Cater for "Meet John at half past 10"~~
 * ~~Cater for "Meet John at half 10"~~
 * ~~Cater for "Meet John at quarter past 10"~~
-* Cater for "Meet John at quarter to 5"
+* ~~Cater for "Meet John at quarter to 5"~~
 
 ## Do Later
 
