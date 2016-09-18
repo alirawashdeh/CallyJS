@@ -9,6 +9,6 @@
 		"name": "Ali Rawashdeh"
 	},
 	"scripts": {
-		"test": "node ./test/cally-test.js"
+		"test": "buster-test"
 	}
 }
