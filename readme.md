@@ -7,15 +7,10 @@ Drop cally.js into your web application to use it.
 
 Node.js is only required if you wish to run the unit tests.
 
-## Installation for Testing
-
-```
-$ npm install
-```
-
 ## Running Tests
 
 ```
+$ npm install
 $ npm test
 ```
 
