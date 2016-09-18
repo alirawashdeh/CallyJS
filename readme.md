@@ -16,7 +16,7 @@ $ npm install
 ## Running Tests
 
 ```
-$ npm
+$ npm test
 ```
 
 ## TODO List
