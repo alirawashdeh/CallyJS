@@ -11,6 +11,7 @@ buster.testCase("Date Tests", {
         var appt;
         appt = new Cally("MOOONNNNNDDDAAAAYYYY", new Date());
         buster.assert(!appt.datefound);
+        buster.assert(true == false);
     },
 
     "Day of week - Can find monday, tuesday, wednesday, thursday, friday, saturday, sunday": function() {
