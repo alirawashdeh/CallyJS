@@ -65,8 +65,9 @@ $ npm test
 * ~~Cater for "Meet John this afternoon at 3"~~
 * ~~Cater for "Meet John starting at 14:00"~~
 * ~~Cater for "Meet John at 10 tonight"~~
-* Cater for "Meet John at half past 10"
-* Cater for "Meet John at half 10"
+* ~~Cater for "Meet John at half past 10"~~
+* ~~Cater for "Meet John at half 10"~~
+* Cater for "Meet John at quarter past 10"
 * Cater for "Meet John at quarter to 5"
 
 ## Do Later
@@ -92,6 +93,7 @@ $ npm test
 * Cater for "Meet John near Starbucks"
 
 ### Start Time
+* Cater for "Meet John at 10 past 4"
 * Cater for "Meet John @ 10:00AM"
 * Cater for "Meet John at three"
 * Cater for "Meet John at fourteen hundred"

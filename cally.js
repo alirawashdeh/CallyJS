@@ -479,14 +479,14 @@ Cally = function(text, currentdate) {
         this.timefound = true;
         this.date.setHours(AFTERNOON_TIME, 0, 0, 0);
         this.setSubjectEndPos(regexAfternoonPos);
-            this.pmKeywordFound = true;
+        this.pmKeywordFound = true;
         console.log("Time Keyword found: Afternoon");
       } else {
         if (regexNightPos > -1) {
           this.timefound = true;
           this.date.setHours(EVENING_TIME, 0, 0, 0);
           this.setSubjectEndPos(regexNightPos);
-            this.pmKeywordFound = true;
+          this.pmKeywordFound = true;
           console.log("Time Keyword  found: Night / Evening");
         } else {
           if (regexNoonPos > -1) {
@@ -532,6 +532,8 @@ Cally = function(text, currentdate) {
     var regex4DigitMatch = /([0-2][0-9])([0-5][0-9])/;
     var regex2DigitMatch = /([^a-z]+|^)(at |starting at )([0-1]*[0-9])([^a-z]+|$)/;
     var regex2DigitTimePos = this.textStringLower.search(regex2DigitMatch);
+    var regexHalfPastMatch = /([^a-z]+|^)(at )*(half past |half )([1-9][0-9]*)([^a-z]+|$)/;
+    var regexHalfPastPos = this.textStringLower.search(regexHalfPastMatch);
 
     var hours = 0;
 
@@ -597,15 +599,24 @@ Cally = function(text, currentdate) {
                 this.setSubjectEndPos(regex2DigitTimePos);
                 console.log("Time found: XX");
               }
+            } else {
+              if (regexHalfPastPos > -1) {
+                this.timefound = true;
+                var matches = this.textStringLower.match(regexHalfPastMatch);
+                hours = Number(matches[4]);
+                this.date.setHours(hours, 30, 0, 0);
+                this.setSubjectEndPos(regexHalfPastPos);
+                console.log("Time found: Half past X");
+
+              }
             }
           }
         }
       }
     }
 
-    if(this.pmKeywordFound){
-      if(this.date.getHours() <= 12)
-      {
+    if (this.pmKeywordFound) {
+      if (this.date.getHours() <= 12) {
         this.date.setHours(this.date.getHours() + 12);
       }
     }
