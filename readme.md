@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/alirawashdeh/CallyJS.svg?branch=master)](https://travis-ci.org/alirawashdeh/CallyJS)
+
 # Cally
 
 Natural language processing for the creation of calendar appointments.
@@ -14,7 +16,7 @@ $ npm install
 ## Running Tests
 
 ```
-$ npm test
+$ npm
 ```
 
 ## TODO List
