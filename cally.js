@@ -523,14 +523,14 @@ Cally = function(text, currentdate) {
   // Find time number - e.g. 3PM, 15:00
   this.findTimeNumber = function() {
 
-    var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(pm| pm)([^a-z]+|$)/);
-    var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-1]*[0-9](:[0-5][0-9])?(am| am)([^a-z]+|$)/);
-    var regexAtNumber24HrPos = this.textStringLower.search(/([^a-z]+|^)(at )*[0-2]*[0-9](:[0-5][0-9])([^a-z]+|$)/);
-    var regex4DigitTimePos = this.textStringLower.search(/([^a-z]+|^)(at )[0-2][0-9]([0-5][0-9])([^a-z]+|$)/);
+    var regexAtNumberPMPos = this.textStringLower.search(/([^a-z]+|^)(at |starting at )*[0-1]*[0-9](:[0-5][0-9])?(pm| pm)([^a-z]+|$)/);
+    var regexAtNumberAMPos = this.textStringLower.search(/([^a-z]+|^)(at |starting at )*[0-1]*[0-9](:[0-5][0-9])?(am| am)([^a-z]+|$)/);
+    var regexAtNumber24HrPos = this.textStringLower.search(/([^a-z]+|^)(at |starting at )*[0-2]*[0-9](:[0-5][0-9])([^a-z]+|$)/);
+    var regex4DigitTimePos = this.textStringLower.search(/([^a-z]+|^)(at |starting at )[0-2][0-9]([0-5][0-9])([^a-z]+|$)/);
     var regexAtNumberPMorAMMatch = /([0-1]*[0-9])(:([0-5][0-9]))?( pm|pm| am|am)/;
     var regexAtNumberMatch = /([0-2]*[0-9])(:([0-5][0-9]))/;
     var regex4DigitMatch = /([0-2][0-9])([0-5][0-9])/;
-    var regex2DigitMatch = /([^a-z]+|^)(at )([0-1]*[0-9])([^a-z]+|$)/;
+    var regex2DigitMatch = /([^a-z]+|^)(at |starting at )([0-1]*[0-9])([^a-z]+|$)/;
     var regex2DigitTimePos = this.textStringLower.search(regex2DigitMatch);
 
     var hours = 0;

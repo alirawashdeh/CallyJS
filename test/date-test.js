@@ -911,6 +911,16 @@ buster.testCase("Date Tests", {
         buster.assert(appt.subject == "Meet John");
     },
 
+     "Can find time - starting at": function() {
+        var appt;
+        var date = new Date("August 31, 2016 00:00:00");
+        appt = new Cally("Meet John starting at 10PM", date);
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.subject == "Meet John");
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 22);
+    },
+
         "Can find time combined with time of day - tonight at 8": function() {
         var appt;
         var date = new Date("August 31, 2016 00:00:00");
@@ -930,6 +940,13 @@ buster.testCase("Date Tests", {
         buster.assert(appt.subject == "Meet John");
 
         appt = new Cally("Meet John this afternoon at 4", new Date("August 31, 2016 10:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 16);
+        buster.assert(appt.subject == "Meet John");
+
+
+        appt = new Cally("Meet John at 4 this afternoon", new Date("August 31, 2016 00:00:00"));
         buster.assert(appt.subjectfound);
         buster.assert(appt.timefound);
         buster.assert(appt.date.getHours() == 16);
