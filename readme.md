@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/alirawashdeh/CallyJS.svg?branch=master)](https://travis-ci.org/alirawashdeh/CallyJS)
 
-# Cally
+# CallyJS
 
 Natural language processing for the creation of calendar appointments.
 Drop cally.js into your web application to use it.
