@@ -14,7 +14,7 @@ $ npm install
 ## Running Tests
 
 ```
-$ node_modules/buster/bin/buster-test
+$ npm test
 ```
 
 ## TODO List
