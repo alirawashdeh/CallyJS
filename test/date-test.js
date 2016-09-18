@@ -744,6 +744,25 @@ buster.testCase("Date Tests", {
         buster.assert(appt.subject == "Meet John");
     },
 
+    "Can find time keywords - in X hours": function() {
+        var appt;
+        var date = new Date("August 31, 2016 00:00:00");
+        appt = new Cally("Meet John in 1 hour", date);
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.subject == "Meet John");
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 1);
+
+        appt = new Cally("Meet John in 25 hours", new Date("August 31, 2016 21:53:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 22);
+        buster.assert(appt.date.getMinutes() == 53);
+        buster.assert(appt.date.getDate() == 1);
+        buster.assert(appt.date.getMonth() == 8); // september
+        buster.assert(appt.subject == "Meet John");
+    },
+
     "Time - 11PM, 12PM, 3AM, 10:00AM, 10:30, 14:30, 6:30PM, 0900": function() {
         var appt;
         appt = new Cally("Meet John at 11PM", new Date());
