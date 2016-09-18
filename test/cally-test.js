@@ -18,7 +18,6 @@ buster.testCase("Date Tests", {
 
         date = new Date();
         appt = new Cally("Meet John monday", new Date());
-
         buster.assert(appt.datefound);
         buster.assert(appt.date.getDay() == 1);
         buster.assert(appt.date.getTime() > date.getTime());
@@ -26,7 +25,6 @@ buster.testCase("Date Tests", {
 
         date = new Date();
         appt = new Cally("Meet John tuesday", new Date());
-
         buster.assert(appt.datefound);
         buster.assert(appt.date.getDay() == 2);
         buster.assert(appt.date.getTime() > date.getTime());
@@ -783,25 +781,6 @@ buster.testCase("Date Tests", {
         buster.assert(appt.subject == "Meet John");
     },
 
-
-    "Can find time keywords - half past X": function() {
-        var appt;
-        appt = new Cally("Meet John at half past 9", new Date("August 31, 2016 00:00:00"));
-        buster.assert(appt.subjectfound);
-        buster.assert(appt.timefound);
-        console.log("*********" + appt.date.getHours());
-        buster.assert(appt.date.getHours() == 9);
-        buster.assert(appt.date.getMinutes() == 30);
-        buster.assert(appt.subject == "Meet John");
-
-        appt = new Cally("Meet John half 8", new Date("August 31, 2016 00:00:00"));
-        buster.assert(appt.subjectfound);
-        buster.assert(appt.timefound);
-        buster.assert(appt.date.getHours() == 8);
-        buster.assert(appt.date.getMinutes() == 30);
-        buster.assert(appt.subject == "Meet John");
-    },
-
     "Time - 11PM, 12PM, 3AM, 10:00AM, 10:30, 14:30, 6:30PM, 0900": function() {
         var appt;
         appt = new Cally("Meet John at 11PM", new Date());
@@ -927,6 +906,41 @@ buster.testCase("Date Tests", {
         buster.assert(appt.date.getDate() == 3);
         buster.assert(appt.date.getMonth() == 8);
         buster.assert(appt.date.getFullYear() == 2016);
+        buster.assert(appt.subject == "Meet John");
+    },
+
+    "Can find time - half past X": function() {
+        var appt;
+        appt = new Cally("Meet John at half past 9", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 9);
+        buster.assert(appt.date.getMinutes() == 30);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John half 8", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 8);
+        buster.assert(appt.date.getMinutes() == 30);
+        buster.assert(appt.subject == "Meet John");
+    },
+
+
+    "Can find time - quarter past X": function() {
+        var appt;
+        appt = new Cally("Meet John at quarter past 9", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 9);
+        buster.assert(appt.date.getMinutes() == 15);
+        buster.assert(appt.subject == "Meet John");
+
+        appt = new Cally("Meet John quarter past 8", new Date("August 31, 2016 00:00:00"));
+        buster.assert(appt.subjectfound);
+        buster.assert(appt.timefound);
+        buster.assert(appt.date.getHours() == 8);
+        buster.assert(appt.date.getMinutes() == 15);
         buster.assert(appt.subject == "Meet John");
     },
 

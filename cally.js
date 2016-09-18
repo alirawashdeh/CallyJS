@@ -534,6 +534,8 @@ Cally = function(text, currentdate) {
     var regex2DigitTimePos = this.textStringLower.search(regex2DigitMatch);
     var regexHalfPastMatch = /([^a-z]+|^)(at )*(half past |half )([1-9][0-9]*)([^a-z]+|$)/;
     var regexHalfPastPos = this.textStringLower.search(regexHalfPastMatch);
+    var regexQuarterPastMatch = /([^a-z]+|^)(at )*(quarter past |quarter )([1-9][0-9]*)([^a-z]+|$)/;
+    var regexQuarterPastPos = this.textStringLower.search(regexQuarterPastMatch);
 
     var hours = 0;
 
@@ -607,7 +609,16 @@ Cally = function(text, currentdate) {
                 this.date.setHours(hours, 30, 0, 0);
                 this.setSubjectEndPos(regexHalfPastPos);
                 console.log("Time found: Half past X");
+              } else {
+                if (regexQuarterPastPos > -1) {
+                  this.timefound = true;
+                  var matches = this.textStringLower.match(regexQuarterPastMatch);
+                  hours = Number(matches[4]);
+                  this.date.setHours(hours, 15, 0, 0);
+                  this.setSubjectEndPos(regexQuarterPastPos);
+                  console.log("Time found: Quarter past X");
 
+                }
               }
             }
           }
