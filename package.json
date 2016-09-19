@@ -2,13 +2,16 @@
   "name": "cally",
   "version": "1.0.0",
   "description": "Parses natural language to create a calendar appointment",
-  "dependencies": {
+  "devDependencies": {
+    "jshint": "^2.9.3",
     "mocha": "^3.0.2"
   },
   "author": {
     "name": "Ali Rawashdeh"
   },
   "scripts": {
-    "test": "mocha test"
+    "test": "npm run tests && npm run lint",
+    "lint": "jshint **/*.js",
+    "tests": "mocha test"
   }
 }

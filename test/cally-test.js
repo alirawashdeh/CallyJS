@@ -1,6 +1,6 @@
 "use strict";
 var assert = require('assert');
-var Cally = require('../cally.js');
+var Cally = require('../src/cally.js');
 
 var eveningTime = 20;
 var morningTime = 10;
