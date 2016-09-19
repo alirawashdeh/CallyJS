@@ -300,8 +300,6 @@ function Cally(text, currentdate) {
     }
   };
 
-
-
   // Find date keyword - e.g. Today, Tomorrow, Next Week
   this.findDateKeyword = function() {
     var defaultDate = this.date ? this.date : new Date();
