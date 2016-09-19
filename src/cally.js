@@ -23,7 +23,6 @@ function Cally(text, currentdate) {
 
   this.parse = function() {
     if (this.textString.length > 0) {
-      console.log("Parsing text: ", this.textString);
       this.findDayOfWeek(); //e.g. Monday Tuesday
       if (!this.datefound) {
         this.findDateKeyword(); //e.g. Tonight, Tomorrow, Next Year, in 1 month
@@ -58,43 +57,36 @@ function Cally(text, currentdate) {
       foundDay = 0;
       this.setSubjectEndPos(regexSundayPos);
       nextFound = this.findNext(regexSundayPos);
-      console.log("Day of week found: Sunday");
     } else {
       if (regexMondayPos > -1) {
         foundDay = 1;
         this.setSubjectEndPos(regexMondayPos);
         nextFound = this.findNext(regexMondayPos);
-        console.log("Day of week found: Monday");
       } else {
         if (regexTuesdayPos > -1) {
           foundDay = 2;
           this.setSubjectEndPos(regexTuesdayPos);
           nextFound = this.findNext(regexTuesdayPos);
-          console.log("Day of week found: Tuesday");
         } else {
           if (regexWednesdayPos > -1) {
             foundDay = 3;
             this.setSubjectEndPos(regexWednesdayPos);
             nextFound = this.findNext(regexWednesdayPos);
-            console.log("Day of week found: Wednesday");
           } else {
             if (regexThursdayPos > -1) {
               foundDay = 4;
               this.setSubjectEndPos(regexThursdayPos);
               nextFound = this.findNext(regexThursdayPos);
-              console.log("Day of week found: Thursday");
             } else {
               if (regexFridayPos > -1) {
                 foundDay = 5;
                 this.setSubjectEndPos(regexFridayPos);
                 nextFound = this.findNext(regexFridayPos);
-                console.log("Day of week found: Friday");
               } else {
                 if (regexSaturdayPos > -1) {
                   foundDay = 6;
                   this.setSubjectEndPos(regexSaturdayPos);
                   nextFound = this.findNext(regexSaturdayPos);
-                  console.log("Day of week found: Saturday");
                 }
               }
             }
@@ -195,7 +187,7 @@ function Cally(text, currentdate) {
         newDate = new Date(this.date.getFullYear(), 0, Number(matches[3]));
       }
       this.setSubjectEndPos(regexJanPos);
-      console.log("Date and Month found: January");
+      //("Date and Month found: January");
     } else {
       if (regexFebPos > -1) {
         found = true;
@@ -204,7 +196,6 @@ function Cally(text, currentdate) {
           newDate = new Date(this.date.getFullYear(), 1, Number(matches[3]));
         }
         this.setSubjectEndPos(regexFebPos);
-        console.log("Date and Month found: February");
       } else {
         if (regexMarPos > -1) {
           found = true;
@@ -213,7 +204,6 @@ function Cally(text, currentdate) {
             newDate = new Date(this.date.getFullYear(), 2, Number(matches[3]));
           }
           this.setSubjectEndPos(regexMarPos);
-          console.log("Date and Month found: March");
         } else {
           if (regexAprPos > -1) {
             found = true;
@@ -222,7 +212,6 @@ function Cally(text, currentdate) {
               newDate = new Date(this.date.getFullYear(), 3, Number(matches[3]));
             }
             this.setSubjectEndPos(regexAprPos);
-            console.log("Date and Month found: April");
           } else {
             if (regexMayPos > -1) {
               found = true;
@@ -231,7 +220,6 @@ function Cally(text, currentdate) {
                 newDate = new Date(this.date.getFullYear(), 4, Number(matches[3]));
               }
               this.setSubjectEndPos(regexMayPos);
-              console.log("Date and Month found: May");
             } else {
               if (regexJunPos > -1) {
                 found = true;
@@ -240,7 +228,6 @@ function Cally(text, currentdate) {
                   newDate = new Date(this.date.getFullYear(), 5, Number(matches[3]));
                 }
                 this.setSubjectEndPos(regexJunPos);
-                console.log("Date and Month found: Jun");
               } else {
                 if (regexJulPos > -1) {
                   found = true;
@@ -249,7 +236,6 @@ function Cally(text, currentdate) {
                     newDate = new Date(this.date.getFullYear(), 6, Number(matches[3]));
                   }
                   this.setSubjectEndPos(regexJulPos);
-                  console.log("Date and Month found: Jul");
                 } else {
                   if (regexAugPos > -1) {
                     found = true;
@@ -258,7 +244,6 @@ function Cally(text, currentdate) {
                       newDate = new Date(this.date.getFullYear(), 7, Number(matches[3]));
                     }
                     this.setSubjectEndPos(regexAugPos);
-                    console.log("Date and Month found: August");
                   } else {
                     if (regexSepPos > -1) {
                       found = true;
@@ -267,7 +252,6 @@ function Cally(text, currentdate) {
                         newDate = new Date(this.date.getFullYear(), 8, Number(matches[3]));
                       }
                       this.setSubjectEndPos(regexSepPos);
-                      console.log("Date and Month found: September");
                     } else {
                       if (regexOctPos > -1) {
                         found = true;
@@ -276,7 +260,6 @@ function Cally(text, currentdate) {
                           newDate = new Date(this.date.getFullYear(), 9, Number(matches[3]));
                         }
                         this.setSubjectEndPos(regexOctPos);
-                        console.log("Date and Month found: October");
                       } else {
                         if (regexNovPos > -1) {
                           found = true;
@@ -285,7 +268,6 @@ function Cally(text, currentdate) {
                             newDate = new Date(this.date.getFullYear(), 10, Number(matches[3]));
                           }
                           this.setSubjectEndPos(regexNovPos);
-                          console.log("Date and Month found: November");
                         } else {
                           if (regexDecPos > -1) {
                             found = true;
@@ -294,7 +276,6 @@ function Cally(text, currentdate) {
                               newDate = new Date(this.date.getFullYear(), 11, Number(matches[3]));
                             }
                             this.setSubjectEndPos(regexDecPos);
-                            console.log("Date and Month found: December");
                           }
                         }
                       }
@@ -347,13 +328,11 @@ function Cally(text, currentdate) {
       // Keep the default date.
       this.datefound = true;
       this.setSubjectEndPos(regexTodayPos);
-      console.log("Day of week found: Today");
     } else {
       if (regexTomorrowPos > -1) {
         this.date.setDate(defaultDate.getDate() + 1);
         this.datefound = true;
         this.setSubjectEndPos(regexTomorrowPos);
-        console.log("Day of week found: Tomorrow");
       } else {
         if (regexThisAfternoonPos > -1) {
           // Keep the default date
@@ -362,7 +341,6 @@ function Cally(text, currentdate) {
           this.date.setHours(AFTERNOON_TIME, 0, 0, 0);
           this.setSubjectEndPos(regexThisAfternoonPos);
           this.pmKeywordFound = true;
-          console.log("Day of week found: This Afternoon");
         } else {
           if (regexTonightPos > -1) {
             // Keep the default date
@@ -371,7 +349,6 @@ function Cally(text, currentdate) {
             this.date.setHours(EVENING_TIME, 0, 0, 0);
             this.setSubjectEndPos(regexTonightPos);
             this.pmKeywordFound = true;
-            console.log("Day of week found: Tonight / This Evening");
           } else {
             if (regexInTheMorningPos > -1) {
               this.datefound = true;
@@ -379,25 +356,21 @@ function Cally(text, currentdate) {
               this.date.setDate(defaultDate.getDate() + 1);
               this.date.setHours(MORNING_TIME, 0, 0, 0);
               this.setSubjectEndPos(regexInTheMorningPos);
-              console.log("Day of week found: In the Morning");
             } else {
               if (regexNextWeekPos > -1) {
                 this.datefound = true;
                 this.date.setDate(defaultDate.getDate() + 7);
                 this.setSubjectEndPos(regexNextWeekPos);
-                console.log("Day of week found: Next Week");
               } else {
                 if (regexNextMonthPos > -1) {
                   this.datefound = true;
                   this.date.setMonth(defaultDate.getMonth() + 1);
                   this.setSubjectEndPos(regexNextMonthPos);
-                  console.log("Day of week found: Next Month");
                 } else {
                   if (regexNextYearPos > -1) {
                     this.datefound = true;
                     this.date.setFullYear(defaultDate.getFullYear() + 1);
                     this.setSubjectEndPos(regexNextYearPos);
-                    console.log("Day of week found: Next Year");
                   } else {
                     if (regexInXDaysPos > -1) {
                       this.datefound = true;
@@ -408,7 +381,6 @@ function Cally(text, currentdate) {
                         this.date.setDate(defaultDate.getDate() + Number(matches[3]));
                       }
                       this.setSubjectEndPos(regexInXDaysPos);
-                      console.log("Day of week found: In X Days");
                     } else {
                       if (regexInXWeeksPos > -1) {
                         this.datefound = true;
@@ -419,7 +391,6 @@ function Cally(text, currentdate) {
                           this.date.setDate(defaultDate.getDate() + (Number(matches[3]) * 7));
                         }
                         this.setSubjectEndPos(regexInXWeeksPos);
-                        console.log("Day of week found: In X Weeks");
                       } else {
                         if (regexInXMonthsPos > -1) {
                           this.datefound = true;
@@ -430,7 +401,6 @@ function Cally(text, currentdate) {
                             this.date.setMonth(defaultDate.getMonth() + Number(matches[3]));
                           }
                           this.setSubjectEndPos(regexInXMonthsPos);
-                          console.log("Day of week found: In X Months");
                         } else {
                           if (regexInXYearsPos > -1) {
                             this.datefound = true;
@@ -441,7 +411,6 @@ function Cally(text, currentdate) {
                               this.date.setFullYear(defaultDate.getFullYear() + Number(matches[3]));
                             }
                             this.setSubjectEndPos(regexInXYearsPos);
-                            console.log("Day of week found: In X Years");
                           }
                         }
                       }
@@ -472,27 +441,23 @@ function Cally(text, currentdate) {
       this.timefound = true;
       this.date.setHours(MORNING_TIME, 0, 0, 0);
       this.setSubjectEndPos(regexMorningPos);
-      console.log("Time Keyword found: Morning");
     } else {
       if (regexAfternoonPos > -1) {
         this.timefound = true;
         this.date.setHours(AFTERNOON_TIME, 0, 0, 0);
         this.setSubjectEndPos(regexAfternoonPos);
         this.pmKeywordFound = true;
-        console.log("Time Keyword found: Afternoon");
       } else {
         if (regexNightPos > -1) {
           this.timefound = true;
           this.date.setHours(EVENING_TIME, 0, 0, 0);
           this.setSubjectEndPos(regexNightPos);
           this.pmKeywordFound = true;
-          console.log("Time Keyword  found: Night / Evening");
         } else {
           if (regexNoonPos > -1) {
             this.timefound = true;
             this.date.setHours(MIDDAY_TIME, 0, 0, 0);
             this.setSubjectEndPos(regexNoonPos);
-            console.log("Time Keyword found: Noon / Midday");
           } else {
             if (regexInXHoursPos > -1) {
               matches = this.textStringLower.match(regexInXHoursMatch);
@@ -501,7 +466,6 @@ function Cally(text, currentdate) {
                 this.date.setHours(this.date.getHours() + Number(matches[3]));
               }
               this.setSubjectEndPos(regexInXHoursPos);
-              console.log("Time Keyword found: In X Hours");
             } else {
               if (regexInXMinutesPos > -1) {
                 matches = this.textStringLower.match(regexInXMinutesMatch);
@@ -510,7 +474,6 @@ function Cally(text, currentdate) {
                   this.date.setMinutes(this.date.getMinutes() + Number(matches[3]));
                 }
                 this.setSubjectEndPos(regexInXMinutesPos);
-                console.log("Time Keyword found: In X Minutes");
               }
             }
           }
@@ -553,7 +516,6 @@ function Cally(text, currentdate) {
         this.date.setMinutes(Number(matches[3]));
       }
       this.setSubjectEndPos(regexAtNumberPMPos);
-      console.log("Time found: XPM");
     } else {
       if (regexAtNumberAMPos > -1) {
         this.timefound = true;
@@ -567,7 +529,6 @@ function Cally(text, currentdate) {
           this.date.setMinutes(Number(matches[3]));
         }
         this.setSubjectEndPos(regexAtNumberAMPos);
-        console.log("Time found: XAM");
       } else {
         if (regexAtNumber24HrPos > -1) {
           this.timefound = true;
@@ -578,7 +539,6 @@ function Cally(text, currentdate) {
             this.date.setMinutes(Number(matches[3]));
           }
           this.setSubjectEndPos(regexAtNumber24HrPos);
-          console.log("Time found: XX:XX");
         } else {
           if (regex4DigitTimePos > -1) {
             this.timefound = true;
@@ -589,7 +549,6 @@ function Cally(text, currentdate) {
               this.date.setMinutes(Number(matches[2]));
             }
             this.setSubjectEndPos(regex4DigitTimePos);
-            console.log("Time found: XXXX");
           } else {
             if (regex2DigitTimePos > -1) {
               this.timefound = true;
@@ -601,7 +560,6 @@ function Cally(text, currentdate) {
                 }
                 this.date.setHours(hours, 0, 0, 0);
                 this.setSubjectEndPos(regex2DigitTimePos);
-                console.log("Time found: XX");
               }
             } else {
               if (regexHalfPastPos > -1) {
@@ -610,7 +568,6 @@ function Cally(text, currentdate) {
                 hours = Number(matches[4]);
                 this.date.setHours(hours, 30, 0, 0);
                 this.setSubjectEndPos(regexHalfPastPos);
-                console.log("Time found: Half past X");
               } else {
                 if (regexQuarterPastPos > -1) {
                   this.timefound = true;
@@ -618,7 +575,6 @@ function Cally(text, currentdate) {
                   hours = Number(matches[4]);
                   this.date.setHours(hours, 15, 0, 0);
                   this.setSubjectEndPos(regexQuarterPastPos);
-                  console.log("Time found: Quarter past X");
                 } else {
                   if (regexQuarterToPos > -1) {
                     this.timefound = true;
@@ -626,7 +582,6 @@ function Cally(text, currentdate) {
                     hours = Number(matches[4]) - 1;
                     this.date.setHours(hours, 45, 0, 0);
                     this.setSubjectEndPos(regexQuarterToPos);
-                    console.log("Time found: Quarter to X");
                   }
                 }
               }
