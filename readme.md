@@ -45,12 +45,10 @@ Results in the following output:
 > "6:00:00 PM"
 ```
 
+## Developers
 
-## Clone and run tests
-
+No build is required, clone the repostory and run the following commands to execute the tests (requires [Node.js](https://nodejs.org/en/download/)):
 ```
-$ git clone https://github.com/alirawashdeh/CallyJS.git
-$ cd CallyJS
 $ npm install
 $ npm test
 ```
