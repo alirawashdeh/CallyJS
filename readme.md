@@ -37,7 +37,7 @@ if(appointment.timefound){
 }
 ```
 
-Results in the following output:
+This results in the following output:
 
 ```
 > Meet John
