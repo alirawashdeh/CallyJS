@@ -55,5 +55,5 @@ npm test
 
 After you update any code, you can create an updated ```cally-min.js``` file by running:
 ```
-npm prepublish
+npm run prepublish
 ```

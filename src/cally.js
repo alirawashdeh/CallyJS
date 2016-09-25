@@ -616,4 +616,5 @@ function Cally(text, currentdate) {
   this.parse();
 }
 
-module.exports = Cally;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
+    module.exports = Cally;
