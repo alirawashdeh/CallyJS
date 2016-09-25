@@ -10,10 +10,10 @@ Node.js is only required if you wish to run the unit tests.
 
 ## Usage
 
-If using CallyJS in a web application, add cally.js to your scripts folder then reference it in your HTML header:
+If using CallyJS in a web application, add ```cally-min.js``` to your scripts folder then reference it in your HTML header:
 
 ```html
-<script type="text/javascript" src="scripts/cally.js"></script>
+<script type="text/javascript" src="scripts/cally-min.js"></script>
 ```
 
 Use CallyJS by passing your text string and a current date:
