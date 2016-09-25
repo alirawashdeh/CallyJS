@@ -4,14 +4,16 @@
   "description": "Parses natural language to create a calendar appointment",
   "devDependencies": {
     "jshint": "^2.9.3",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "uglify-js": "^2.7.3"
   },
   "author": {
     "name": "Ali Rawashdeh"
   },
   "scripts": {
     "test": "npm run tests && npm run lint",
-    "lint": "jshint **/*.js",
-    "tests": "mocha test"
+    "lint": "jshint src/*.js",
+    "tests": "mocha test",
+    "prepublish": "npm run test && rm -rf dist && mkdir -p dist && uglifyjs ./src/cally.js -o ./dist/cally-min.js"
   }
 }

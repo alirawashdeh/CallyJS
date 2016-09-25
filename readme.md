@@ -49,6 +49,11 @@ This results in the following output:
 
 No build is required, clone the repostory and run the following commands to execute the tests (requires [Node.js](https://nodejs.org/en/download/)):
 ```
-$ npm install
-$ npm test
+npm install
+npm test
+```
+
+After you update any code, you can create an updated ```cally-min.js``` file by running:
+```
+npm prepublish
 ```
