@@ -9,7 +9,7 @@ Node.js is only required if you wish to run the unit tests.
 
 ## Installation
 
-## Node.js installation
+### Node.js installation
 
 Install CallyJS into a node.js application using npm:
 ```
@@ -22,7 +22,7 @@ Reference it in your application (e.g. ```index.js```) using the following:
 var Cally = require('callyjs');
 ```
 
-## Web application installation
+### Web application installation
 
 Clone the repository and copy ```cally-min.js``` to the public ```scripts``` folder of your web application.
 
