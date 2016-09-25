@@ -7,14 +7,32 @@ Natural language processing for the creation of calendar appointments.
 
 Node.js is only required if you wish to run the unit tests.
 
+## Installation
 
-## Usage
+## Node.js installation
 
-If using CallyJS in a web application, add ```cally-min.js``` to your scripts folder then reference it in your HTML header:
+Install CallyJS into a node.js application using npm:
+```
+npm install callyjs --save
+```
+
+Reference it in your application (e.g. ```index.js```) using the following:
+
+```
+var Cally = require('callyjs');
+```
+
+## Web application installation
+
+Clone the repository and copy ```cally-min.js``` to the public ```scripts``` folder of your web application.
+
+Reference CallyJS in your HTML header:
 
 ```html
 <script type="text/javascript" src="scripts/cally-min.js"></script>
 ```
+
+## Usage
 
 Use CallyJS by passing your text string and a current date:
 
