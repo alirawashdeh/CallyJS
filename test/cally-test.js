@@ -809,7 +809,7 @@ describe('Cally', function() {
   // ********** Time *************
   describe('Time', function() {
 
-    it("Time - 11PM, 12PM, 3AM, 10:00AM, 10:30, 14:30, 6:30PM, 0900", function() {
+    it("Can find time - 11PM, 12PM, 3AM, 10:00AM, 10:30, 14:30, 6:30PM, 0900", function() {
       var appt;
       appt = new Cally("Meet John at 11PM", new Date());
       assert(appt.subjectfound);
@@ -1028,6 +1028,81 @@ describe('Cally', function() {
       assert(appt.subjectfound);
       assert(appt.timefound);
       assert(appt.date.getHours() == 16);
+      assert(appt.subject == "Meet John");
+    });
+
+    it("Can find time words - one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve", function() {
+      var appt;
+      appt = new Cally("Meet John at one", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 1);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at two", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 2);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at three", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 3);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at four", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 4);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at five", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 5);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at six tonight", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 18);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at seven pm", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 19);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at eight", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 8);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at nine", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 9);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at ten", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 10);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at eleven", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 11);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John at twelve", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 12);
       assert(appt.subject == "Meet John");
     });
   });

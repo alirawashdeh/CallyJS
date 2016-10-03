@@ -498,6 +498,8 @@ function Cally(text, currentdate) {
     var regexQuarterPastPos = this.textStringLower.search(regexQuarterPastMatch);
     var regexQuarterToMatch = /([^a-z]+|^)(at )*(quarter to )([1-9][0-9]*)([^a-z]+|$)/;
     var regexQuarterToPos = this.textStringLower.search(regexQuarterToMatch);
+    var regexTimeNumberWordMatch = /([^a-z]+|^)(at |starting at )(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)(am| am)?(pm| pm)?([^a-z]+|$)/;
+    var regexTimeNumberWordPos = this.textStringLower.search(regexTimeNumberWordMatch);
 
     var matches;
     var hours = 0;
@@ -580,6 +582,17 @@ function Cally(text, currentdate) {
                     hours = Number(matches[4]) - 1;
                     this.date.setHours(hours, 45, 0, 0);
                     this.setSubjectEndPos(regexQuarterToPos);
+                  } else {
+                    if (regexTimeNumberWordPos > -1) {
+                      this.timefound = true;
+                      matches = this.textStringLower.match(regexTimeNumberWordMatch);
+                      hours = matches[3];
+                      this.date.setHours(this.convertTimeNumber(hours), 0, 0, 0);
+                      if(matches[5]){
+                        this.pmKeywordFound = true;
+                      }
+                      this.setSubjectEndPos(regexTimeNumberWordPos);
+                    }
                   }
                 }
               }
@@ -593,6 +606,37 @@ function Cally(text, currentdate) {
       if (this.date.getHours() <= 12) {
         this.date.setHours(this.date.getHours() + 12);
       }
+    }
+  };
+
+  this.convertTimeNumber = function(text) {
+    switch(text) {
+      case "one":
+        return 1;
+      case "two":
+        return 2;
+      case "three":
+        return 3;
+      case "four":
+        return 4;
+      case "five":
+        return 5;
+      case "six":
+        return 6;
+      case "seven":
+        return 7;
+      case "eight":
+        return 8;
+      case "nine":
+        return 9;
+      case "ten":
+        return 10;
+      case "eleven":
+        return 11;
+      case "twelve":
+        return 12;
+      default:
+        return 0;
     }
   };
 
@@ -617,4 +661,4 @@ function Cally(text, currentdate) {
 }
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
-    module.exports = Cally;
+module.exports = Cally;
