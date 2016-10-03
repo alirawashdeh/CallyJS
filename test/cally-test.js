@@ -1057,10 +1057,10 @@ describe('Cally', function() {
       assert(appt.date.getHours() == 4);
       assert(appt.subject == "Meet John");
 
-      appt = new Cally("Meet John at five", new Date("August 31, 2016 00:00:00"));
+      appt = new Cally("Meet John at five", new Date("August 31, 2016 08:00:00"));
       assert(appt.subjectfound);
       assert(appt.timefound);
-      assert(appt.date.getHours() == 5);
+      assert(appt.date.getHours() == 17);
       assert(appt.subject == "Meet John");
 
       appt = new Cally("Meet John at six tonight", new Date("August 31, 2016 00:00:00"));

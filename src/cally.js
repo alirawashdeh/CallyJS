@@ -586,8 +586,14 @@ function Cally(text, currentdate) {
                     if (regexTimeNumberWordPos > -1) {
                       this.timefound = true;
                       matches = this.textStringLower.match(regexTimeNumberWordMatch);
-                      hours = matches[3];
-                      this.date.setHours(this.convertTimeNumber(hours), 0, 0, 0);
+                      hours = this.convertTimeNumber(matches[3]);
+
+                      if (hours <= 12) {
+                        if (!this.datefound && hours <= this.date.getHours()) {
+                          hours += 12;
+                        }
+                      }
+                      this.date.setHours(hours, 0, 0, 0);
                       if(matches[5]){
                         this.pmKeywordFound = true;
                       }
