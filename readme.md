@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/alirawashdeh/CallyJS.svg?branch=master)](https://travis-ci.org/alirawashdeh/CallyJS)
+[![Build Status](https://travis-ci.org/alirawashdeh/callyjs.svg?branch=master)](https://travis-ci.org/alirawashdeh/callyjs)
 
 # CallyJS
 
