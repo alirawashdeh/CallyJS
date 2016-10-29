@@ -585,10 +585,10 @@ describe('Cally', function() {
       assert(appt.date.getFullYear() == 2017);
       assert(appt.subject == "Meet John");
 
-      appt = new Cally("Meet John on 1st June", new Date("August 31, 2016 00:00:00"));
+      appt = new Cally("Meet John on 3rd June", new Date("August 31, 2016 00:00:00"));
       assert(appt.subjectfound);
       assert(appt.datefound);
-      assert(appt.date.getDate() == 1);
+      assert(appt.date.getDate() == 3);
       assert(appt.date.getMonth() == 5);
       assert(appt.date.getFullYear() == 2017);
       assert(appt.subject == "Meet John");

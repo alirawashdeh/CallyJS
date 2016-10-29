@@ -151,29 +151,29 @@ function Cally(text, currentdate) {
   // Find date and month - e.g. on 12th November
   this.findDateAndMonth = function() {
 
-    var regexJanMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( jan| january)([^a-z]+|$)/;
+    var regexJanMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( jan| january)([^a-z]+|$)/;
     var regexJanPos = this.textStringLower.search(regexJanMatch);
-    var regexFebMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( feb| february)([^a-z]+|$)/;
+    var regexFebMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( feb| february)([^a-z]+|$)/;
     var regexFebPos = this.textStringLower.search(regexFebMatch);
-    var regexMarMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( mar| march)([^a-z]+|$)/;
+    var regexMarMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( mar| march)([^a-z]+|$)/;
     var regexMarPos = this.textStringLower.search(regexMarMatch);
-    var regexAprMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( apr| april)([^a-z]+|$)/;
+    var regexAprMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( apr| april)([^a-z]+|$)/;
     var regexAprPos = this.textStringLower.search(regexAprMatch);
-    var regexMayMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( may| may)([^a-z]+|$)/;
+    var regexMayMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( may| may)([^a-z]+|$)/;
     var regexMayPos = this.textStringLower.search(regexMayMatch);
-    var regexJunMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( jun| june)([^a-z]+|$)/;
+    var regexJunMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( jun| june)([^a-z]+|$)/;
     var regexJunPos = this.textStringLower.search(regexJunMatch);
-    var regexJulMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( jul| july)([^a-z]+|$)/;
+    var regexJulMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( jul| july)([^a-z]+|$)/;
     var regexJulPos = this.textStringLower.search(regexJulMatch);
-    var regexAugMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( aug| august)([^a-z]+|$)/;
+    var regexAugMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( aug| august)([^a-z]+|$)/;
     var regexAugPos = this.textStringLower.search(regexAugMatch);
-    var regexSepMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( sep| september)([^a-z]+|$)/;
+    var regexSepMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( sep| september)([^a-z]+|$)/;
     var regexSepPos = this.textStringLower.search(regexSepMatch);
-    var regexOctMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( oct| october)([^a-z]+|$)/;
+    var regexOctMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( oct| october)([^a-z]+|$)/;
     var regexOctPos = this.textStringLower.search(regexOctMatch);
-    var regexNovMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( nov| november)([^a-z]+|$)/;
+    var regexNovMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( nov| november)([^a-z]+|$)/;
     var regexNovPos = this.textStringLower.search(regexNovMatch);
-    var regexDecMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|th)?( of)?( dec| december)([^a-z]+|$)/;
+    var regexDecMatch = /([^a-z0-9]+|^)(on |on the )?([1-9][0-9]*)(st|nd|rd|th)?( of)?( dec| december)([^a-z]+|$)/;
     var regexDecPos = this.textStringLower.search(regexDecMatch);
 
     var newDate;
