@@ -9,6 +9,7 @@ function Cally(text, currentdate) {
   this.date = currentdate;
   this.datefound = false;
   this.timefound = false;
+  this.allday = false;
 
   this.subject = "";
   this.subjectfound = false;
@@ -30,6 +31,7 @@ function Cally(text, currentdate) {
       this.findDateAndMonth();
       this.findTimeKeyword(); // e.g. evening, morning, in 1 hour
       this.findTimeNumber(); // e.g. 3PM, 15:00
+      this.findAllDayKeyword(); // e.g. all day
       this.populateSubject(); // e.g. 'Meet John'
     }
 
@@ -612,6 +614,18 @@ function Cally(text, currentdate) {
       if (this.date.getHours() <= 12) {
         this.date.setHours(this.date.getHours() + 12);
       }
+    }
+  };
+
+
+  // Find all day keyword - e.g. "all day"
+  this.findAllDayKeyword = function() {
+
+    var regexAllDayPos = this.textStringLower.search(/([^a-z]+|^)(all day|all-day)([^a-z]+|$)/);
+
+    if (regexAllDayPos > -1) {
+      this.allday = true;
+      this.setSubjectEndPos(regexAllDayPos);
     }
   };
 

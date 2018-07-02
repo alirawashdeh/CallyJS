@@ -1105,5 +1105,24 @@ describe('Cally', function() {
       assert(appt.date.getHours() == 12);
       assert(appt.subject == "Meet John");
     });
+
+      it("Can find all-day events", function() {
+        var appt;
+        appt = new Cally("Meet John tomorrow all day", new Date("August 31, 2016 00:00:00"));
+        assert(appt.subjectfound);
+        assert(appt.subject == "Meet John");
+        assert(appt.date.getDate() == 1);
+        assert(appt.date.getMonth() == 8);
+        assert(appt.allday == true);
+
+        appt = new Cally("Meet John all-day tomorrow", new Date("August 31, 2016 00:00:00"));
+        assert(appt.subjectfound);
+        assert(appt.subject == "Meet John");
+        assert(appt.date.getDate() == 1);
+        assert(appt.date.getMonth() == 8);
+        assert(appt.allday == true);
+
+      });
+
   });
 });
