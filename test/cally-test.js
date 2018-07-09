@@ -997,6 +997,27 @@ describe('Cally', function() {
       assert(appt.subject == "Meet John");
       assert(appt.timefound);
       assert(appt.date.getHours() == 22);
+
+      appt = new Cally("Meet John starting at quarter to 8", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 7);
+      assert(appt.date.getMinutes() == 45);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John starting at half 5", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 5);
+      assert(appt.date.getMinutes() == 30);
+      assert(appt.subject == "Meet John");
+
+      appt = new Cally("Meet John starting at quarter past 5", new Date("August 31, 2016 00:00:00"));
+      assert(appt.subjectfound);
+      assert(appt.timefound);
+      assert(appt.date.getHours() == 5);
+      assert(appt.date.getMinutes() == 15);
+      assert(appt.subject == "Meet John");
     });
 
     it("Can find time combined with time of day - tonight at 8", function() {

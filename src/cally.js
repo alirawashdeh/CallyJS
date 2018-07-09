@@ -494,11 +494,11 @@ function Cally(text, currentdate) {
     var regex4DigitMatch = /([0-2][0-9])([0-5][0-9])/;
     var regex2DigitMatch = /([^a-z]+|^)(at |starting at )([0-1]*[0-9])([^a-z]+|$)/;
     var regex2DigitTimePos = this.textStringLower.search(regex2DigitMatch);
-    var regexHalfPastMatch = /([^a-z]+|^)(at )*(half past |half )([1-9][0-9]*)([^a-z]+|$)/;
+    var regexHalfPastMatch = /([^a-z]+|^)(at |starting at )*(half past |half )([1-9][0-9]*)([^a-z]+|$)/;
     var regexHalfPastPos = this.textStringLower.search(regexHalfPastMatch);
-    var regexQuarterPastMatch = /([^a-z]+|^)(at )*(quarter past )([1-9][0-9]*)([^a-z]+|$)/;
+    var regexQuarterPastMatch = /([^a-z]+|^)(at |starting at )*(quarter past )([1-9][0-9]*)([^a-z]+|$)/;
     var regexQuarterPastPos = this.textStringLower.search(regexQuarterPastMatch);
-    var regexQuarterToMatch = /([^a-z]+|^)(at )*(quarter to )([1-9][0-9]*)([^a-z]+|$)/;
+    var regexQuarterToMatch = /([^a-z]+|^)(at |starting at )*(quarter to )([1-9][0-9]*)([^a-z]+|$)/;
     var regexQuarterToPos = this.textStringLower.search(regexQuarterToMatch);
     var regexTimeNumberWordMatch = /([^a-z]+|^)(at |starting at )(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)(am| am)?(pm| pm)?([^a-z]+|$)/;
     var regexTimeNumberWordPos = this.textStringLower.search(regexTimeNumberWordMatch);
