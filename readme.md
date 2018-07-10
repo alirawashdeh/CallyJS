@@ -39,21 +39,24 @@ Reference CallyJS in your HTML header:
 Use CallyJS by passing your text string and a current date:
 
 ```javascript
-var inputString = "Meet John on 1st Nov at 6 in the evening";
+var inputString = "Meet John on 1st Nov at 6 in the evening for 2 hours";
 var appointment = new Cally(inputString, new Date());
 ```
 
-Then access the appointment object using ```date``` and ```subject``` to see the contents:
+Then access the appointment object using ```startdate```, ```enddate``` and ```subject``` to see the contents:
 
 ```javascript
 if(appointment.subjectfound){
   console.log(appointment.subject);
 }
 if(appointment.datefound){
-  console.log(appointment.date.toLocaleDateString());
+  console.log(appointment.startdate.toLocaleDateString());
 }
-if(appointment.timefound){
-  console.log(appointment.date.toLocaleTimeString());
+if(appointment.starttimefound){
+  console.log(appointment.startdate.toLocaleTimeString());
+}
+if(appointment.endtimefound){
+  console.log(appointment.enddate.toLocaleTimeString());
 }
 ```
 
@@ -63,6 +66,7 @@ This results in the following output:
 > Meet John
 > "11/1/2016"
 > "6:00:00 PM"
+> "8:00:00 PM"
 ```
 
 ## Developers
