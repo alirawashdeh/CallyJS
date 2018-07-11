@@ -43,7 +43,7 @@ var inputString = "Meet John on 1st Nov at 6 in the evening for 2 hours";
 var appointment = new Cally(inputString, new Date());
 ```
 
-Then access the appointment object using ```startdate```, ```enddate``` and ```subject``` to see the contents:
+Then access the appointment details using ```appointment.startdate```, ```appointment.enddate``` and ```appointment.subject``` to see the contents:
 
 ```javascript
 if(appointment.subjectfound){
@@ -68,6 +68,8 @@ This results in the following output:
 > "6:00:00 PM"
 > "8:00:00 PM"
 ```
+
+For all day events such as "Meet John tomorrow all day", you can access the ```appointment.allday``` boolean.
 
 ## Developers
 
