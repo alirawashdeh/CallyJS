@@ -45,6 +45,9 @@ function Cally(text, currentdate) {
     if (this.starttimefound === false) {
       this.startdate.setHours(0, 0, 0, 0);
     }
+    if (this.endtimefound === false) {
+      this.enddate.setHours(0, 0, 0, 0);
+    }
   };
 
 

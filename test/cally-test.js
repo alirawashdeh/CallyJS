@@ -1149,6 +1149,18 @@ describe('Cally', function() {
 
   describe('Durations', function() {
 
+    it("Doesn't have a duration if no duration found", function() {
+      var appt;
+      var date = new Date("August 31, 2016 00:00:00");
+      appt = new Cally("Meet John tomorrow morning", date);
+      assert(appt.subjectfound);
+      assert(appt.datefound);
+      assert(appt.starttimefound);
+      assert(!appt.endtimefound);
+      assert(appt.enddate.getHours() == 0);
+      assert(appt.enddate.getMinutes() == 0);
+    });
+
     it("Can find duration - for X days", function() {
       var appt;
       var date = new Date("August 31, 2016 00:00:00");
