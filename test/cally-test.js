@@ -1161,6 +1161,17 @@ describe('Cally', function() {
       assert(appt.enddate.getMinutes() == 0);
     });
 
+    it("Doesn't have a time if duration found for an all-day event", function() {
+      var appt;
+      var date = new Date("August 31, 2016 10:10:00");
+      appt = new Cally("Meet John on Monday all day for 3 days", date);
+      assert(appt.subjectfound);
+      assert(appt.datefound);
+      assert(appt.endtimefound);
+      assert(appt.enddate.getHours() == 0);
+      assert(appt.enddate.getMinutes() == 0);
+    });
+
     it("Can find duration - for X days", function() {
       var appt;
       var date = new Date("August 31, 2016 00:00:00");

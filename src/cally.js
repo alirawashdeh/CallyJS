@@ -35,18 +35,19 @@ function Cally(text, currentdate) {
       this.findTimeKeyword(); // e.g. evening, morning, in 1 hour
       this.findTimeNumber(); // e.g. 3PM, 15:00
 
+      if (this.starttimefound === false) {
+        this.startdate.setHours(0, 0, 0, 0);
+      }
+
       this.enddate = new Date(this.startdate);
 
       this.findDuration(); // e.g. for 2 hours
       this.findAllDayKeyword(); // e.g. all day
       this.populateSubject(); // e.g. 'Meet John'
-    }
 
-    if (this.starttimefound === false) {
-      this.startdate.setHours(0, 0, 0, 0);
-    }
-    if (this.endtimefound === false) {
-      this.enddate.setHours(0, 0, 0, 0);
+      if (this.endtimefound === false) {
+        this.enddate.setHours(0, 0, 0, 0);
+      }
     }
   };
 
